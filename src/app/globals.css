@@ -11,6 +11,8 @@
   --black-color: #1d1d1d;
   --lightgray-color: #8d8d8d;
   --blue-color: #0099ff;
+  --white-color: #ffffff;
+  --orange50-color: rgba(253, 116, 1, 0.7);
 }
 
 @font-face {
@@ -38,4 +40,5 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: "Pretendard", sans-serif;
+  color: var(--white-color);
 }

@@ -7,7 +7,7 @@ export default function Main() {
       <div className={styles.right}>
         <Link href="/signup">계정 만들기</Link>
         <Link href="/login">로그인</Link>
-        <Link href="/home">홈</Link>
+        <Link href="/container">홈</Link>
       </div>
     </div>
   );
