@@ -1,0 +1,31 @@
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background: var(--gray-color);
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.sidebar div:hover {
+  color: #ff0; /* 노란색으로 변경 */
+}
+
+.sidebar div.active {
+  color: var(--orange-color);
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
