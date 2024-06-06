@@ -1,6 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DevRoom Client
+
+### ✏️ Commit Convention
+
+
+✨ :sparkles: → 새기능  
+💄 :lipstick: → UI스타일 수정  
+♻️ :recycle: → 코드 리팩토링  
+🐛 :bug: → 버그  
+📝 :memo: → 문서 관련 (리드미, 깃이그노어)  
+➕ :heavy_plus_sign: → 의존성 추가  
+➖ :heavy_minus_sign: → 의존성 제거  
+🎨 :art: → 폴더 구조 변경( 파일 이름 변경, 리소스 변경 등)  
+🔀 :twisted_rightwards_arrows: → 머지  
+⏪ :rewind: → 리버트
+
+
+
 
 ## Getting Started
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
