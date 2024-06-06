@@ -4,6 +4,9 @@ import { create } from "zustand";
 // 유저 정보 추가
 interface User {
   name: string;
+  studentId: string;
+  email: string;
+  isStudent: boolean;
 }
 
 interface AuthState {
@@ -20,8 +23,15 @@ interface AuthState {
 //   logout: () => set({ user: null, isLoggedIn: false }),
 // }));
 
+const userDummy = {
+  name: "김태건",
+  studentId: "2019312430",
+  email: "aksen5240@gmail.com",
+  isStudent: true,
+};
+
 export const useAuthStore = create<AuthState>((set) => ({
-  user: null,
+  user: userDummy,
   isLoggedIn: false,
   login: (user) => set({ user: user, isLoggedIn: true }),
   logout: () => set({ user: null, isLoggedIn: false }),
