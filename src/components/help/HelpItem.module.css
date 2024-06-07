@@ -1,0 +1,23 @@
+.helpItem {
+  border: 1px solid var(--orange-color);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--orange-color);
+}
+
+.body {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.category {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #777;
+}
