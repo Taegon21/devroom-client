@@ -122,8 +122,12 @@ export default function Layout({ children }: LayoutProps) {
               </div>
             </Link>
           </div>
-          <Link href="/notice">
-            <div className={`${styles.menuItem} ${isActive("/notice")}`}>
+          <Link href="/notice/all">
+            <div
+              className={`${styles.menuItem} ${
+                isActive("/notice/all") || isActive("/notice/specific")
+              }`}
+            >
               <Image
                 src="/icons/Notice.svg"
                 alt="notice"
@@ -163,24 +167,30 @@ export default function Layout({ children }: LayoutProps) {
           </Link>
         </div>
       </div>
-      {/* 메인 컨텐츠 */}
-      <div
-        className={`${styles.topName} ${!isSidebarOpen ? styles.shifted : ""}`}
-      >
-        {!isSidebarOpen && (
-          <HamburgerIcon
-            onClick={toggleSidebar}
-            className={styles.iconButton}
-          />
-        )}
 
-        <div className={styles.studentId}>{user?.name}</div>
-        <div className={styles.studentId}> / {user?.studentId}</div>
-      </div>
-      <div
-        className={`${styles.content} ${!isSidebarOpen ? styles.shifted : ""}`}
-      >
-        {children}
+      {/* 메인 컨텐츠 */}
+      <div className={`${styles.left} ${!isSidebarOpen ? styles.shifted : ""}`}>
+        <div
+          className={`${styles.topName} ${
+            !isSidebarOpen ? styles.shifted : ""
+          }`}
+        >
+          {!isSidebarOpen && (
+            <HamburgerIcon
+              onClick={toggleSidebar}
+              className={styles.iconButton}
+            />
+          )}
+          <div className={styles.studentId}>{user?.name}</div>
+          <div className={styles.studentId}> / {user?.studentId}</div>
+        </div>
+        <div
+          className={`${styles.content} ${
+            !isSidebarOpen ? styles.shifted : ""
+          }`}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );
