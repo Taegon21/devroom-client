@@ -1,12 +1,27 @@
 .layout {
   display: flex;
-  height: 100dvh;
+  min-height: 100dvh;
+  background-color: var(--black-color);
 }
 
 .sidebar {
   width: 310px;
+  min-width: 310px;
   background: var(--gray-color);
   padding: 20px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateX(0);
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .school {
@@ -52,7 +67,7 @@
   height: 60px;
   padding: 10px;
   border-radius: 10px;
-  transition: color 0.1s;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .menuText {
@@ -88,14 +103,18 @@
 
 .menuItem.active {
   background-color: var(--orange50-color);
-  transition: background-color 0.3s;
 }
 
 .content {
   flex-grow: 1;
   padding-top: 100px;
   background-color: var(--black-color);
-  padding-left: 40px;
+  padding: 100px 40px 0;
+  transition: margin-left 0.3s ease;
+}
+
+.content.shifted {
+  margin-left: -310px;
 }
 
 .topName {
@@ -111,4 +130,15 @@
   font-family: "Pretendard-bold";
   gap: 10px;
   padding-left: 40px;
+  transition: left 0.3s ease;
+  min-width: 300px;
+}
+
+.topName.shifted {
+  left: 20px;
+}
+
+.iconButton {
+  cursor: pointer;
+  margin-left: -20px;
 }
