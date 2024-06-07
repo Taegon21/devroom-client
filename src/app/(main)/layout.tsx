@@ -137,15 +137,15 @@ export default function Layout({ children }: LayoutProps) {
               <div>공지</div>
             </div>
           </Link>
-          <Link href="/community">
-            <div className={`${styles.menuItem} ${isActive("/community")}`}>
+          <Link href="/message">
+            <div className={`${styles.menuItem} ${isActive("/message")}`}>
               <Image
-                src="/icons/Community.svg"
+                src="/icons/Message.svg"
                 alt="community"
                 width={35}
                 height={35}
               />
-              <div>커뮤니티</div>
+              <div>메세지</div>
             </div>
           </Link>
           <Link href="/help">
