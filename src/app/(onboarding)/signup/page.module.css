@@ -1,5 +1,5 @@
 .container {
-  background-color: var(--black-color);
+  background-color: var(--gray-color);
   display: flex;
   flex-direction: row;
   min-height: 100dvh;
@@ -8,9 +8,22 @@
 .left {
   width: 480px;
   background-color: var(--gray-color);
-  border-top-right-radius: 40px;
-  border-bottom-right-radius: 40px;
+}
+
+.right {
+  flex: 1;
+  background-color: var(--black-color);
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
   padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightContainer {
+  width: 480px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,12 +37,14 @@
   font-size: 24px;
   font-family: "Pretendard-bold";
 }
+
 .grayText {
   color: var(--lightgray-color);
   font-size: 18px;
   padding-top: 15px;
   font-family: "Pretendard-bold";
 }
+
 .grayText2 {
   color: var(--lightgray-color);
   font-size: 16px;
@@ -38,7 +53,7 @@
 }
 
 .inputContainer {
-  padding-top: 30px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -71,83 +86,49 @@
   outline-width: 10px;
 }
 
-.forgotPassword {
-  margin-top: -5px;
-  color: var(--lightgray-color);
-  font-size: 16px;
-  text-align: right;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.loginButton {
+.createAccountButton {
   width: 100%;
   height: 50px;
+  margin-top: 60px;
   background-color: var(--orange-color);
   color: var(--white-color);
   border-radius: 10px;
   font-size: 16px;
   font-family: "Pretendard-bold";
-  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   cursor: pointer;
 }
-.divierContent {
+
+.linkContainer {
+  padding-top: 15px;
   display: flex;
-  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
   gap: 10px;
-}
-
-.orDivider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 20px 0;
-}
-
-.orDivider::before,
-.orDivider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid var(--lightgray-color);
-  margin: 0 10px;
-}
-
-.orDivider span {
-  font-size: 16px;
-  color: var(--lightgray-color);
-}
-
-.signupButton {
   width: 100%;
-  height: 50px;
-  border: 1px solid var(--orange-color);
-  color: var(--orange-color);
-  border-radius: 10px;
-  font-size: 16px;
-  font-family: "Pretendard-bold";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  cursor: pointer;
 }
 
-.right {
-  flex: 1;
-  background-color: var(--black-color);
+.textAlready {
+  color: var(--lightgray-color);
+  font-size: 16px;
+  font-family: "Pretendard";
+}
+
+.loginLink {
+  color: var(--orange-color);
 }
 
 @media (max-width: 768px) {
-  .left {
-    width: 100%;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
   .right {
+    border-radius: 0px;
+  }
+  .rightContainer {
+    width: 100%;
+  }
+  .left {
     display: none;
   }
 }
