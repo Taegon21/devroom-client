@@ -1,16 +1,18 @@
 .layout {
   display: flex;
   min-height: 100dvh;
-  background-color: var(--black-color);
+  height: 100%;
+  background-color: var(--gray-color);
 }
 
 .sidebar {
   width: 310px;
   min-width: 310px;
-  background: var(--gray-color);
   padding: 20px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform: translateX(0);
+  height: 100%;
+  background-color: var(--gray-color);
 }
 
 .sidebar.closed {
@@ -107,39 +109,35 @@
 
 .content {
   flex-grow: 1;
-  padding-top: 100px;
   background-color: var(--black-color);
-  padding: 100px 40px 0;
+  padding: 50px 40px 0;
   transition: margin-left 0.3s ease;
   min-width: 500px;
 }
 
-.content.shifted {
-  margin-left: -310px;
+.left {
+  background-color: var(--black-color);
+  width: 100%;
+  height: 100dvh;
+  transition: 0.3s ease;
 }
 
 .topName {
-  position: fixed;
-  height: 80px;
-  top: 20px;
-  left: 310px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: var(--black-color);
+  padding: 50px 40px 0;
   font-size: 24px;
   font-family: "Pretendard-bold";
   gap: 10px;
-  padding-left: 40px;
-  transition: left 0.3s ease;
-  min-width: 300px;
+  background-color: var(--black-color);
 }
 
-.topName.shifted {
-  left: 20px;
+.left.shifted {
+  margin-left: -310px;
+  background-color: var(--black-color);
 }
 
 .iconButton {
   cursor: pointer;
-  margin-left: -20px;
 }
