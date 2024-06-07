@@ -32,7 +32,7 @@ const userDummy = {
 
 export const useAuthStore = create<AuthState>((set) => ({
   user: userDummy,
-  isLoggedIn: false,
+  isLoggedIn: true,
   login: (user) => set({ user: user, isLoggedIn: true }),
   logout: () => set({ user: null, isLoggedIn: false }),
 }));

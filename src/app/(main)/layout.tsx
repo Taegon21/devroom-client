@@ -1,11 +1,13 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import styles from "./layout.module.css";
 import { useAuthStore } from "@/store/authStore";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import Image from "next/image";
+import LeftArrowIcon from "/public/icons/LeftArrow.svg";
+import HamburgerIcon from "/public/icons/Hamburger.svg";
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,16 +15,54 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const user = useAuthStore((state) => state.user);
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const [isSidebarOpen, setSidebarOpen] = useState<boolean>(true);
+
+  // 만약 isLoggedIn이 false라면 로그인 페이지로 리다이렉트 (페이지 보호)
+  if (!isLoggedIn) {
+    redirect("/login");
+  }
+
   const navigation = usePathname();
 
   const isActive = (path: string) => {
     return navigation === path ? styles.active : "";
   };
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleResize = () => {
+    if (window.innerWidth <= 768) {
+      setSidebarOpen(false);
+    } else {
+      setSidebarOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    handleResize(); // 초기 실행 시 한 번 호출
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className={styles.layout}>
-      <div className={styles.sidebar}>
-        <div className={styles.school}>성균관대학교</div>
+      {/* 사이드바 */}
+      <div
+        className={`${styles.sidebar} ${isSidebarOpen ? "" : styles.closed}`}
+      >
+        <div className={styles.logo}>
+          <div className={styles.school}>성균관대학교</div>
+          <LeftArrowIcon
+            onClick={toggleSidebar}
+            className={styles.iconButton}
+          />
+        </div>
+
         <div className={styles.userContainer}>
           <Image
             src="/icons/MyProfile.svg"
@@ -56,6 +96,13 @@ export default function Layout({ children }: LayoutProps) {
             />
           </div>
           <div className={styles.subMenu}>
+            <Link href="/container/all">
+              <div
+                className={`${styles.menuItem} ${isActive("/container/all")}`}
+              >
+                <div>전체 학기 컨테이너</div>
+              </div>
+            </Link>
             <Link href="/container/recent">
               <div
                 className={`${styles.menuItem} ${isActive(
@@ -72,13 +119,6 @@ export default function Layout({ children }: LayoutProps) {
                 )}`}
               >
                 <div>이번 학기 컨테이너</div>
-              </div>
-            </Link>
-            <Link href="/container/all">
-              <div
-                className={`${styles.menuItem} ${isActive("/container/all")}`}
-              >
-                <div>전체 학기 컨테이너</div>
               </div>
             </Link>
           </div>
@@ -123,11 +163,25 @@ export default function Layout({ children }: LayoutProps) {
           </Link>
         </div>
       </div>
-      <div className={styles.topName}>
+      {/* 메인 컨텐츠 */}
+      <div
+        className={`${styles.topName} ${!isSidebarOpen ? styles.shifted : ""}`}
+      >
+        {!isSidebarOpen && (
+          <HamburgerIcon
+            onClick={toggleSidebar}
+            className={styles.iconButton}
+          />
+        )}
+
         <div className={styles.studentId}>{user?.name}</div>
         <div className={styles.studentId}> / {user?.studentId}</div>
       </div>
-      <div className={styles.content}>{children}</div>
+      <div
+        className={`${styles.content} ${!isSidebarOpen ? styles.shifted : ""}`}
+      >
+        {children}
+      </div>
     </div>
   );
 }
