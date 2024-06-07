@@ -2,7 +2,6 @@
   display: flex;
   min-height: 100dvh;
   background-color: var(--black-color);
-  overflow-x: auto;
 }
 
 .sidebar {

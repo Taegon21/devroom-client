@@ -1,6 +1,6 @@
 .container {
-  max-width: 1200px;
-  position: relative;
+  display: relative;
+  z-index: 3;
 }
 
 .headerTitle {
@@ -17,12 +17,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .searchBox {
   position: relative;
   width: 100%;
-  width: 400px;
+  max-width: 400px;
+  min-width: 300px;
 }
 
 .searchInput {
@@ -51,15 +53,13 @@
 }
 
 .results {
-  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+  padding-bottom: 20px;
 }
 
-.resultItem {
-  padding: 15px;
-  border-bottom: 1px solid #ccc;
-}
-
-/* 미디어 쿼리 추가 */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -73,5 +73,15 @@
 
   .filter {
     width: 100%;
+  }
+
+  .result {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .resultItem {
+    flex: 1 1 100%;
   }
 }

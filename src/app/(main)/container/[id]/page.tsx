@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import SearchIcon from "/public/icons/Search.svg";
 import styles from "./page.module.css";
 import Filter from "@/components/home/Filter";
+import Container from "@/components/home/Container";
+import dummyData from "@/data/dummy_container_data.json";
 
 export default function Home() {
   const param = useParams();
@@ -19,25 +21,23 @@ export default function Home() {
 
   // 검색 상태
   const [searchQuery, setSearchQuery] = useState("");
-  const [results, setResults] = useState<string[]>([]);
+  const [filteredContainers, setFilteredContainers] = useState(dummyData);
   const [_, setFilterOption] = useState<string | null>(null);
-
-  const allContainers = [
-    "Container 1",
-    "Container 2",
-    "Container 3",
-    "Recent Container 123",
-    "Semester Container 1",
-  ];
 
   useEffect(() => {
     if (searchQuery === "") {
-      setResults(allContainers);
+      setFilteredContainers(dummyData);
     } else {
-      const filteredResults = allContainers.filter((container) =>
-        container.toLowerCase().includes(searchQuery.toLowerCase())
+      const filteredResults = dummyData.filter(
+        (container) =>
+          container.course_name
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
+          container.professor_name
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase())
       );
-      setResults(filteredResults);
+      setFilteredContainers(filteredResults);
     }
   }, [searchQuery]);
 
@@ -68,10 +68,8 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.results}>
-        {results.map((result, index) => (
-          <div key={index} className={styles.resultItem}>
-            {result}
-          </div>
+        {filteredContainers.map((container, index) => (
+          <Container key={index} {...container} />
         ))}
       </div>
     </div>
