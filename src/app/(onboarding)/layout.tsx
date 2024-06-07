@@ -7,7 +7,6 @@ interface LayoutProps {
 export default async function Layout({ children }: LayoutProps) {
   return (
     <>
-      <div>로그인 layout</div>
       <div>{children}</div>
     </>
   );

@@ -53,10 +53,10 @@ const MyPage = () => {
       <div className={styles.linkSection}>
         <h2 className={styles.sectionTitle}>로그인 관리</h2>
         <div className={styles.linkItem}>회원 정보 변경하기</div>
-        <Link href="/help">
+        <Link href="/login">
           <div className={styles.linkItem}>로그아웃</div>
         </Link>
-        <Link href="/help">
+        <Link href="/signup">
           <div className={styles.linkItem}>탈퇴하기</div>
         </Link>
       </div>
