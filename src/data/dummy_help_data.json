@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "title": "How to login",
+    "body": "Instructions on how to login to the system.",
+    "category": "General"
+  },
+  {
+    "id": 2,
+    "title": "Reset Password",
+    "body": "Steps to reset your password.",
+    "category": "Account"
+  },
+  {
+    "id": 3,
+    "title": "Navigating the Dashboard",
+    "body": "Guide to navigate through the dashboard.",
+    "category": "General"
+  },
+  {
+    "id": 4,
+    "title": "Setting up Two-Factor Authentication",
+    "body": "How to set up two-factor authentication.",
+    "category": "Security"
+  },
+  {
+    "id": 5,
+    "title": "Updating Profile Information",
+    "body": "Steps to update your profile information.",
+    "category": "Account"
+  },
+  {
+    "id": 6,
+    "title": "Managing Notifications",
+    "body": "How to manage notification settings.",
+    "category": "General"
+  },
+  {
+    "id": 7,
+    "title": "Creating a New Account",
+    "body": "Instructions on how to create a new account.",
+    "category": "Account"
+  },
+  {
+    "id": 8,
+    "title": "Privacy Settings",
+    "body": "Guide to adjust your privacy settings.",
+    "category": "Security"
+  },
+  {
+    "id": 9,
+    "title": "Using the Help Center",
+    "body": "How to use the help center to find answers.",
+    "category": "General"
+  },
+  {
+    "id": 10,
+    "title": "Deleting Your Account",
+    "body": "Steps to delete your account permanently.",
+    "category": "Account"
+  },
+  {
+    "id": 11,
+    "title": "Reporting a Bug",
+    "body": "How to report a bug or issue in the system.",
+    "category": "General"
+  }
+]
