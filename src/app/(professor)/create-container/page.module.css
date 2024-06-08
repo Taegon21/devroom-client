@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--lightgray-color);
+  padding: 40px;
+  border-radius: 30px;
+}
+
+.leftContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 50px;
+}
+
+.logoText {
+  font-size: 30px;
+  font-family: "Pretendard-bold";
+  padding: 50px 0 15px;
+}
+.grayText {
+  color: var(--gray-color);
+  font-size: 16px;
+  font-family: "Pretendard-bold";
+}
+
+.rightContainer {
+  flex: 1;
+  padding: 40px 0 20px;
+  max-width: 800px;
+}
+
+.title {
+  font-size: 24px;
+  font-family: "Pretendard-bold";
+  padding: 10px 0;
+  margin-bottom: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-family: "Pretendard-bold";
+  color: var(--gray-color);
+}
+
+.formGroup input,
+.formGroup select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+.submitButton {
+  margin-top: 30px;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: white;
+  background-color: var(--orange-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .leftContainer {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .container {
+    width: 310px;
+    padding: 10px 20px;
+  }
+}
