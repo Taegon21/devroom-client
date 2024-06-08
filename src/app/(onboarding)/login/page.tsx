@@ -1,9 +1,41 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./page.module.css";
 import LogoIcon from "/public/icons/Logo1.svg";
 import EmailIcon from "/public/icons/Email.svg";
 import PasswordIcon from "/public/icons/Password.svg";
 import Link from "next/link";
-export default function login() {
+import { useAuthStore, authenticateUser } from "@/store/authStore";
+import { useRouter } from "next/navigation";
+import WarningModal from "@/components/common/WarningModal";
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const login = useAuthStore((state) => state.login);
+
+  const router = useRouter();
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const user = authenticateUser(email, password);
+
+    if (user) {
+      login(user);
+      router.push(user.isStudent ? "/container/all" : "/create-container");
+    } else {
+      setError("Invalid email or password");
+      setShowModal(true);
+    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setError("");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -23,6 +55,7 @@ export default function login() {
                 id="email"
                 className={styles.input}
                 placeholder="Enter your email address"
+                onChange={(e) => setEmail(e.target.value)}
               />
               <EmailIcon className={styles.icon} />
             </div>
@@ -37,13 +70,14 @@ export default function login() {
                 id="password"
                 className={styles.input}
                 placeholder="Enter your password"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <PasswordIcon className={styles.icon} />
             </div>
             <div className={styles.forgotPassword}>Forgot password?</div>
-            <Link href="/container/all" className={styles.loginButton}>
+            <button className={styles.loginButton} onClick={handleSubmit}>
               Login now
-            </Link>
+            </button>
             <div className={styles.orDivider}>
               <span>or</span>
             </div>
@@ -53,6 +87,7 @@ export default function login() {
           </div>
         </div>
       </div>
+      {showModal && <WarningModal message={error} onClose={closeModal} />}
       <div className={styles.right}>
         <div className={styles.background} />
       </div>
