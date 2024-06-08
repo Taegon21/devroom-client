@@ -16,12 +16,14 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const user = useAuthStore((state) => state.user);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const isLoading = useAuthStore((state) => state.isLoading);
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
-  // 만약 isLoggedIn이 false라면 로그인 페이지로 리다이렉트 (페이지 보호)
-  if (!isLoggedIn) {
-    redirect("/login");
-  }
+  useEffect(() => {
+    if (!isLoggedIn && !isLoading) {
+      redirect("/login");
+    }
+  }, [isLoggedIn, isLoading]);
 
   const navigation = usePathname();
 

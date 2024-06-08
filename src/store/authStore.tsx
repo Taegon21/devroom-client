@@ -1,5 +1,5 @@
-// store/authStore.ts
 import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 // 유저 정보 추가
 interface User {
@@ -12,11 +12,13 @@ interface User {
 interface AuthState {
   user: User | null;
   isLoggedIn: boolean;
+  isLoading: boolean;
   login: (user: User) => void;
   logout: () => void;
+  setLoading: (loading: boolean) => void;
 }
 
-const userDummy = {
+const userDummyStudent = {
   name: "김태건",
   studentId: "2019312430",
   email: "aksen5240@gmail.com",
@@ -30,9 +32,38 @@ const userDummyProfessor = {
   isStudent: false,
 };
 
-export const useAuthStore = create<AuthState>((set) => ({
-  user: userDummyProfessor,
-  isLoggedIn: true,
-  login: (user) => set({ user: user, isLoggedIn: true }),
-  logout: () => set({ user: null, isLoggedIn: false }),
-}));
+export const useAuthStore = create<AuthState>()(
+  persist<AuthState>(
+    (set) => ({
+      user: null,
+      isLoggedIn: false,
+      isLoading: true,
+      login: (user: User) => {
+        set({ user: user, isLoggedIn: true, isLoading: false });
+        sessionStorage.setItem("isLoggedIn", "true");
+      },
+      logout: () => {
+        set({ user: null, isLoggedIn: false, isLoading: false });
+        sessionStorage.removeItem("isLoggedIn");
+      },
+      setLoading: (loading: boolean) => set({ isLoading: loading }),
+    }),
+    {
+      name: "authStore",
+      storage: createJSONStorage(() => sessionStorage),
+      onRehydrateStorage: () => (state) => {
+        state?.setLoading(false);
+      },
+    }
+  )
+);
+
+export const authenticateUser = (email: string, password: string) => {
+  if (email === "student" && password === "123") {
+    return userDummyStudent;
+  } else if (email === "professor" && password === "123") {
+    return userDummyProfessor;
+  } else {
+    return null;
+  }
+};
