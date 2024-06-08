@@ -8,7 +8,9 @@ import Link from "next/link";
 export default function signup() {
   return (
     <div className={styles.container}>
-      <div className={styles.left}>left</div>
+      <div className={styles.left}>
+        <div className={styles.background} />
+      </div>
       <div className={styles.right}>
         <div className={styles.rightContainer}>
           <div className={styles.logo}>
