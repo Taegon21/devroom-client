@@ -1,3 +1,5 @@
+/* EditContainerPage.module.css */
+
 .container {
   display: flex;
   flex-direction: row;
@@ -20,6 +22,7 @@
   font-family: "Pretendard-bold";
   padding: 50px 0 15px;
 }
+
 .grayText {
   color: var(--gray-color);
   font-size: 16px;
@@ -65,15 +68,30 @@
   border-radius: 12px;
 }
 
-.submitButton {
+.buttonGroup {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.saveButton,
+.deleteButton {
   margin-top: 30px;
   padding: 10px 15px;
   font-size: 16px;
   color: white;
-  background-color: var(--orange-color);
   border: none;
   border-radius: 12px;
   cursor: pointer;
+  flex: 1;
+}
+
+.saveButton {
+  background-color: var(--orange-color);
+}
+
+.deleteButton {
+  background-color: var(--gray-color);
 }
 
 @media (max-width: 768px) {

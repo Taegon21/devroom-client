@@ -1,0 +1,20 @@
+[
+  {
+    "id": "id-java2024",
+    "type": "vscode",
+    "port": "8080",
+    "command": ""
+  },
+  {
+    "id": "id-python2024",
+    "type": "ssh",
+    "port": "",
+    "command": "ssh -p 22 user@host"
+  },
+  {
+    "id": "id-cpp2024",
+    "type": "vscode",
+    "port": "9090",
+    "command": ""
+  }
+]
