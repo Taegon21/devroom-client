@@ -16,13 +16,6 @@ interface AuthState {
   logout: () => void;
 }
 
-//  const useAuthStore = create<AuthState>((set) => ({
-//   user: null,
-//   isLoggedIn: true,
-//   login: (user) => set({ user: user, isLoggedIn: true }),
-//   logout: () => set({ user: null, isLoggedIn: false }),
-// }));
-
 const userDummy = {
   name: "김태건",
   studentId: "2019312430",
@@ -30,8 +23,15 @@ const userDummy = {
   isStudent: true,
 };
 
+const userDummyProfessor = {
+  name: "교수자1",
+  studentId: "1999312430",
+  email: "aksen5240@gmail.com",
+  isStudent: false,
+};
+
 export const useAuthStore = create<AuthState>((set) => ({
-  user: userDummy,
+  user: userDummyProfessor,
   isLoggedIn: true,
   login: (user) => set({ user: user, isLoggedIn: true }),
   logout: () => set({ user: null, isLoggedIn: false }),
