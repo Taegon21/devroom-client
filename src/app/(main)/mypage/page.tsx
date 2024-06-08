@@ -4,10 +4,23 @@ import { useAuthStore } from "@/store/authStore";
 import styles from "./page.module.css";
 import ProfilePic from "/public/icons/MyProfile.svg";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const MyPage = () => {
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    router.push("/login");
+  };
+
+  const handleDeleteAccount = () => {
+    logout();
+    router.push("/login");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.profileSection}>
@@ -53,12 +66,12 @@ const MyPage = () => {
       <div className={styles.linkSection}>
         <h2 className={styles.sectionTitle}>로그인 관리</h2>
         <div className={styles.linkItem}>회원 정보 변경하기</div>
-        <Link href="/login">
-          <div className={styles.linkItem}>로그아웃</div>
-        </Link>
-        <Link href="/signup">
-          <div className={styles.linkItem}>탈퇴하기</div>
-        </Link>
+        <div className={styles.linkItem} onClick={handleLogout}>
+          로그아웃
+        </div>
+        <div className={styles.linkItem} onClick={handleDeleteAccount}>
+          탈퇴하기
+        </div>
       </div>
     </div>
   );
