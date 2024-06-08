@@ -2,7 +2,6 @@ import styles from "./page.module.css";
 import LogoIcon from "/public/icons/Logo1.svg";
 import EmailIcon from "/public/icons/Email.svg";
 import PasswordIcon from "/public/icons/Password.svg";
-import Background from "/public/icons/Background.svg";
 import Link from "next/link";
 export default function login() {
   return (

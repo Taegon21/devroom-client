@@ -2,7 +2,7 @@
   display: flex;
   flex: 1;
   height: 100dvh;
-  background-color: var(--black-color);
+  background-color: var(--gray-color);
 }
 
 .right {
