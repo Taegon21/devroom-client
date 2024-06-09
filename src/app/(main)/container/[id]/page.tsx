@@ -4,12 +4,18 @@ import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import SearchIcon from "/public/icons/Search.svg";
 import styles from "./page.module.css";
-import Filter from "@/components/home/Filter";
-import Container from "@/components/home/Container";
+import Filter from "@/components/container/Filter";
+import Container from "@/components/container/Container";
 import dummyData from "@/data/dummy_container_data.json";
 
 export default function Home() {
   const { id: container } = useParams();
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredContainers, setFilteredContainers] = useState(dummyData);
+  const [filterOption, setFilterOption] = useState("");
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   const titles = {
     recent: "최근 실행 컨테이너",
@@ -19,10 +25,6 @@ export default function Home() {
 
   const title =
     titles[container as keyof typeof titles] || "전체 학기 컨테이너";
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredContainers, setFilteredContainers] = useState(dummyData);
-  const [filterOption, setFilterOption] = useState("");
 
   useEffect(() => {
     let filtered = dummyData;
@@ -52,6 +54,10 @@ export default function Home() {
 
   const handleFilterSelect = (option: string) => {
     setFilterOption(option);
+  };
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
   };
 
   return (
