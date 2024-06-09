@@ -1,5 +1,5 @@
 .container {
-  width: 300px;
+  min-width: 300px;
   height: 240px;
   background-color: var(--lightgray2-color);
   border-radius: 10px;
@@ -8,7 +8,7 @@
 .container:hover {
   transform: scale(1.03);
   box-shadow: 0 0 10px 0 rgb(240, 162, 54);
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
 .topContainer {
@@ -51,4 +51,10 @@
   fill: var(--orange-color);
   cursor: pointer;
   transition: fill 0.15s ease;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 300px;
+  }
 }
