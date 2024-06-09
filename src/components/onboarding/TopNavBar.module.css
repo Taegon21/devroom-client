@@ -1,0 +1,42 @@
+.topNavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 50px;
+  border: 1px solid var(--lightgray-color);
+  border-radius: 50px;
+  margin: 40px 100px 0;
+}
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.logoText {
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--white-color);
+}
+
+.logoText:hover {
+  cursor: pointer;
+  color: var(--orange-color);
+}
+
+@media (max-width: 800px) {
+  .topNavBar {
+    margin: 40px 20px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topNavBar {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .logoText {
+    font-size: 16px;
+  }
+}
