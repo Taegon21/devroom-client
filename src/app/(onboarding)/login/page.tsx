@@ -41,7 +41,9 @@ export default function Login() {
       <div className={styles.left}>
         <div className={styles.leftContainer}>
           <div className={styles.logo}>
-            <LogoIcon />
+            <Link href="/onboarding">
+              <LogoIcon />
+            </Link>
             <div>DevLatte</div>
           </div>
           <div className={styles.grayText}>Login into your account</div>

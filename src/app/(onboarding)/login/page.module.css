@@ -30,7 +30,10 @@
   align-items: center;
   font-size: 24px;
   font-family: "Pretendard-bold";
+  color: var(--white-color);
+  text-decoration: none;
 }
+
 .grayText {
   color: var(--lightgray-color);
   font-size: 18px;

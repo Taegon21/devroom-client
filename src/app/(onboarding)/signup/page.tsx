@@ -14,7 +14,9 @@ export default function signup() {
       <div className={styles.right}>
         <div className={styles.rightContainer}>
           <div className={styles.logo}>
-            <LogoIcon />
+            <Link href="/onboarding">
+              <LogoIcon />
+            </Link>
             <div>DevLatte</div>
           </div>
           <div className={styles.grayText}>Create your Account</div>
