@@ -5,6 +5,7 @@ import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import styles from "./page.module.css";
 import dummyData from "@/data/dummy_notice_data.json";
 import dummyMessageData from "@/data/dummy_message_data.json";
+import ToggleButton from "@/components/common/ToggleButton";
 
 interface Message {
   id: number;
@@ -18,6 +19,11 @@ const MessagePage = () => {
   const [selectedProfessor, setSelectedProfessor] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState<string>("");
+  const [darkMode, setDarkMode] = useState<boolean>(true);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   useEffect(() => {
     if (selectedCourse) {
@@ -25,7 +31,7 @@ const MessagePage = () => {
         (notice) => notice.course_name === selectedCourse
       )?.professor_name;
       setSelectedProfessor(professor || "");
-      setMessages(dummyMessageData); 
+      setMessages(dummyMessageData);
     }
   }, [selectedCourse]);
 
@@ -58,7 +64,7 @@ const MessagePage = () => {
     setMessages([...messages, newMsg]);
     setNewMessage("");
 
-    // 임시로 2초 후에 교수님의 답변이 오는 기능
+    // 임시로 1초 후에 교수님의 답변이 오는 기능
     setTimeout(() => {
       const professorReply: Message = {
         id: messages.length + 2,
@@ -67,7 +73,7 @@ const MessagePage = () => {
         timestamp: new Date().toLocaleString(),
       };
       setMessages((prevMessages) => [...prevMessages, professorReply]);
-    }, 2000);
+    }, 1000);
   };
 
   const courseOptions = Array.from(
@@ -76,8 +82,15 @@ const MessagePage = () => {
 
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.headerTitle}>메세지</div>
+      <div
+        className={`${styles.container} ${
+          darkMode ? styles.messagePageDarkMode : styles.messagePageLightMode
+        }`}
+      >
+        <div className={styles.header}>
+          <div className={styles.headerTitle}>메세지</div>
+          <ToggleButton darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        </div>
         <div className={styles.selection}>
           <div className={styles.selectBox}>
             <select
