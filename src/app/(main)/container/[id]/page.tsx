@@ -64,7 +64,9 @@ export default function Home() {
             />
             <SearchIcon className={styles.searchIcon} />
           </div>
-          <Filter onSelect={handleFilterSelect} />
+          <div className={styles.filter}>
+            <Filter onSelect={handleFilterSelect} />
+          </div>
         </div>
       </div>
       <div className={styles.results}>
