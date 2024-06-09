@@ -35,27 +35,47 @@ export default function Filter({ onSelect }: FilterProps) {
   };
 
   return (
-    <div className={styles.filter}>
-      <div className={styles.filterButton}>
-        <FilterIcon />
-        <div className={styles.icon}>
-          {isFilterOpen ? (
-            <UpIcon onClick={toggleFilter} />
-          ) : (
-            <DownIcon onClick={toggleFilter} />
-          )}
+    <>
+      <div className={styles.filter}>
+        <div className={styles.filterButton}>
+          <FilterIcon />
+          <div className={styles.icon}>
+            {isFilterOpen ? (
+              <UpIcon onClick={toggleFilter} />
+            ) : (
+              <DownIcon onClick={toggleFilter} />
+            )}
+          </div>
+        </div>
+        <div
+          className={`${styles.filterOptions} ${
+            isFilterOpen ? styles.open : ""
+          }`}
+        >
+          <div onClick={() => handleSelect("전체 과목 공지 보기")}>
+            전체 과목 공지 보기
+          </div>
+          <div onClick={() => handleSelect("과목별 공지 보기")}>
+            과목별 공지 보기
+          </div>
         </div>
       </div>
-      <div
-        className={`${styles.filterOptions} ${isFilterOpen ? styles.open : ""}`}
-      >
-        <div onClick={() => handleSelect("전체 과목 공지 보기")}>
-          전체 과목 공지 보기
-        </div>
-        <div onClick={() => handleSelect("과목별 공지 보기")}>
-          과목별 공지 보기
+      <div className={styles.smallScreen}>
+        <div className={styles.filterSmall}>
+          <div
+            onClick={() => handleSelect("전체 과목 공지 보기")}
+            className={styles.filterButtonSmall}
+          >
+            전체 과목 공지 보기
+          </div>
+          <div
+            onClick={() => handleSelect("과목별 공지 보기")}
+            className={styles.filterButtonSmall}
+          >
+            과목별 공지 보기
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

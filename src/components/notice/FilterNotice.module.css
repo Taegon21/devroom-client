@@ -48,3 +48,30 @@
   padding: 20px 10px 15px 10px;
   max-height: 200px;
 }
+
+.smallScreen {
+  display: none;
+}
+.filterSmall {
+  display: flex;
+  gap: 20px;
+}
+.filterButtonSmall {
+  background-color: var(--orange50-color);
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .filter {
+    display: none;
+  }
+  .smallScreen {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: var(--white-color);
+  }
+}
