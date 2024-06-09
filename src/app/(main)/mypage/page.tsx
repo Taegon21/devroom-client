@@ -18,7 +18,7 @@ const MyPage = () => {
 
   const handleDeleteAccount = () => {
     logout();
-    router.push("/login");
+    router.push("/onboarding");
   };
 
   return (

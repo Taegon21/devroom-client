@@ -21,7 +21,7 @@ export default function Layout({ children }: LayoutProps) {
 
   useEffect(() => {
     if (!isLoggedIn && !isLoading) {
-      redirect("/login");
+      redirect("/onboarding");
     }
   }, [isLoggedIn, isLoading]);
 
