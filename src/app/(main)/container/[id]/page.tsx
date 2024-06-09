@@ -9,37 +9,42 @@ import Container from "@/components/home/Container";
 import dummyData from "@/data/dummy_container_data.json";
 
 export default function Home() {
-  const param = useParams();
-  const container = param.id;
+  const { id: container } = useParams();
+
+  const titles = {
+    recent: "최근 실행 컨테이너",
+    semester: "이번 학기 컨테이너",
+    all: "전체 학기 컨테이너",
+  };
 
   const title =
-    container === "recent"
-      ? "최근 실행 컨테이너"
-      : container === "semester"
-      ? "이번 학기 컨테이너"
-      : "전체 학기 컨테이너";
+    titles[container as keyof typeof titles] || "전체 학기 컨테이너";
 
-  // 검색 상태
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredContainers, setFilteredContainers] = useState(dummyData);
-  const [_, setFilterOption] = useState<string | null>(null);
+  const [filterOption, setFilterOption] = useState("");
 
   useEffect(() => {
-    if (searchQuery === "") {
-      setFilteredContainers(dummyData);
-    } else {
-      const filteredResults = dummyData.filter(
-        (container) =>
-          container.course_name
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()) ||
-          container.professor_name
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase())
+    let filtered = dummyData;
+
+    if (searchQuery !== "") {
+      filtered = filtered.filter(
+        (c) =>
+          c.course_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          c.professor_name.toLowerCase().includes(searchQuery.toLowerCase())
       );
-      setFilteredContainers(filteredResults);
     }
-  }, [searchQuery]);
+
+    if (container === "recent" || filterOption === "recent") {
+      filtered = filtered.filter((c) =>
+        ["Fall 2023", "Spring 2024"].includes(c.semester)
+      );
+    } else if (container === "semester" || filterOption === "semester") {
+      filtered = filtered.filter((c) => c.semester === "Spring 2024");
+    }
+
+    setFilteredContainers(filtered);
+  }, [searchQuery, filterOption, container]);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
