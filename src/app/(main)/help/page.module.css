@@ -120,6 +120,9 @@
   .searchBox {
     width: 320px;
   }
+  .viewSelector {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {

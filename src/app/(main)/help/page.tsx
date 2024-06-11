@@ -17,6 +17,7 @@ interface HelpData {
 const Help = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [view, setView] = useState<string>("column");
+  const [isWide, setIsWide] = useState(false); // 브라우저의 너비 상태
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -27,17 +28,20 @@ const Help = () => {
   };
 
   const handleCategoryClick = (category: string) => {
-    document.getElementById(category)?.scrollIntoView({ behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      document.getElementById(category)?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setView("column");
+      if (typeof window !== "undefined") {
+        setIsWide(window.innerWidth > 768);
+        setView(window.innerWidth <= 768 ? "column" : "grid");
       }
     };
 
-    handleResize(); // 초기 실행 시 한 번 호출
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -76,9 +80,7 @@ const Help = () => {
             <SearchIcon className={styles.searchIcon} />
           </div>
           <div
-            className={`${styles.viewSelector} ${
-              window.innerWidth > 768 ? "" : styles.hidden
-            }`}
+            className={`${styles.viewSelector} ${isWide ? "" : styles.hidden}`}
           >
             <Filter onViewChange={handleViewChange} currentView={view} />
           </div>
