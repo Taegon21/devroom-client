@@ -16,6 +16,7 @@
 .logoText {
   font-size: 18px;
   text-decoration: none;
+  font-family: "Pretendard-Medium";
   color: var(--white-color);
 }
 
