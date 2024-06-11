@@ -29,6 +29,7 @@
 .school {
   font-size: 24px;
   font-family: "Pretendard-bold";
+  font-weight: 700;
   height: 80px;
   display: flex;
   align-items: center;
@@ -47,6 +48,7 @@
   padding-bottom: 5px;
   gap: 5px;
   font-family: "Pretendard-bold";
+  font-weight: 700;
   font-size: 20px;
 }
 
@@ -75,12 +77,14 @@
   padding: 10px;
   border-radius: 10px;
   font-family: "Pretendard-bold";
+  font-weight: 700;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .menuText {
   font-size: 20px;
   font-family: "Pretendard-bold";
+  font-weight: 700;
 }
 
 .subMenu {
@@ -103,6 +107,7 @@
   text-decoration: none;
   font-size: 20px;
   font-family: "Pretendard-bold";
+  font-weight: 700;
 }
 
 .menuItem:hover {

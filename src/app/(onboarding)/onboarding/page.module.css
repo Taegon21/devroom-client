@@ -29,6 +29,7 @@
 .headerText {
   font-size: 50px;
   font-family: "Pretendard-bold";
+  font-weight: 700;
   color: var(--lightgray2-color);
 }
 .bodyText {
