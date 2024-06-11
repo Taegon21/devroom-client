@@ -43,8 +43,9 @@ export default function RootLayout({
     <html lang="ko">
       <body
         className={`${pretendardBold.className} ${pretendardMedium.className} ${pretendard.className}`}
-      />
-      {children}
+      >
+        {children}
+      </body>
     </html>
   );
 }
