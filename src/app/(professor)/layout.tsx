@@ -77,7 +77,7 @@ export default function Layout({ children }: LayoutProps) {
               <div>{user?.name}</div>
               <div>{user?.isStudent ? "- 학생" : " - 교수"}</div>
             </div>
-            <div className={styles.studentId}>{user?.studentId}</div>
+            <div className={styles.studentsId}>{user?.studentId}</div>
           </div>
         </div>
         <div className={styles.menu}>

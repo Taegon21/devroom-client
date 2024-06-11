@@ -37,6 +37,7 @@
 .professorName {
   font-style: italic;
   color: var(--orange-color);
+  font-size: 18px;
 }
 
 .postDate {
