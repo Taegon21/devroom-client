@@ -1,7 +1,10 @@
+// Container.tsx
+import React, { useState } from "react";
 import styles from "./Container.module.css";
 import VSCodeIcon from "/public/icons/VSCode.svg";
 import SSHIcon from "/public/icons/SSH.svg";
 import PlayIcon from "/public/icons/Play.svg";
+import SSHModal from "./SSHModal";
 
 interface ContainerProps {
   type: string;
@@ -22,7 +25,19 @@ export default function Container({
   semester,
   language,
 }: ContainerProps) {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const icon = type === "vscode" ? <VSCodeIcon /> : <SSHIcon />;
+  const temp_port = 37001;
+
+  const handlePlayClick = () => {
+    if (type === "vscode") {
+      const url = `${process.env.NEXT_PUBLIC_CONTAINER_URL}:${temp_port}`;
+      window.open(url, "_blank");
+    } else {
+      setModalOpen(true);
+    }
+  };
 
   return (
     <>
@@ -36,10 +51,22 @@ export default function Container({
           <div className={styles.semester}>{semester}</div>
           <div className={styles.bottomDescription}>
             <div className={styles.language}>Language: {language}</div>
-            <PlayIcon className={styles.icon} />
+            <PlayIcon
+              className={`${styles.icon} ${
+                type === "vscode" ? styles.disabledIcon : ""
+              }`}
+              onClick={handlePlayClick}
+            />
           </div>
         </div>
       </div>
+      {ssh_commands && (
+        <SSHModal
+          isOpen={isModalOpen}
+          onClose={() => setModalOpen(false)}
+          content={ssh_commands}
+        />
+      )}
     </>
   );
 }

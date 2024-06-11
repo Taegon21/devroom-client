@@ -5,7 +5,7 @@
     "ssh_commands": null,
     "course_name": "Advanced Algorithms",
     "professor_name": "Dr. Smith",
-    "semester": "Fall 2024",
+    "semester": "Fall 2023",
     "language": "C++"
   },
   {
@@ -27,7 +27,7 @@
     "ssh_commands": null,
     "course_name": "Data Structures",
     "professor_name": "Dr. Williams",
-    "semester": "Summer 2024",
+    "semester": "Spring 2024",
     "language": "Java"
   },
   {
@@ -39,7 +39,7 @@
     ],
     "course_name": "Operating Systems",
     "professor_name": "Dr. Brown",
-    "semester": "Winter 2024",
+    "semester": "Spring 2024",
     "language": "C"
   },
   {
