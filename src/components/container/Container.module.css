@@ -35,6 +35,7 @@
   flex-direction: row;
   gap: 5px;
   font-family: "Pretendard-bold";
+  font-weight: 700;
 }
 .bottomDescription {
   padding-top: 20px;
