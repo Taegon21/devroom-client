@@ -1,9 +1,9 @@
 // Container.tsx
+import React, { useState } from "react";
 import styles from "./Container.module.css";
 import VSCodeIcon from "/public/icons/VSCode.svg";
 import SSHIcon from "/public/icons/SSH.svg";
 import PlayIcon from "/public/icons/Play.svg";
-import { useState } from "react";
 import SSHModal from "./SSHModal";
 
 interface ContainerProps {
@@ -28,9 +28,16 @@ export default function Container({
   const [isModalOpen, setModalOpen] = useState(false);
 
   const icon = type === "vscode" ? <VSCodeIcon /> : <SSHIcon />;
+  const temp_port = 37001;
 
-  const handlePlayClick =
-    type === "vscode" ? undefined : () => setModalOpen(true);
+  const handlePlayClick = () => {
+    if (type === "vscode") {
+      const url = `${process.env.NEXT_PUBLIC_CONTAINER_URL}:${temp_port}`;
+      window.open(url, "_blank");
+    } else {
+      setModalOpen(true);
+    }
+  };
 
   return (
     <>
