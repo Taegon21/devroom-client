@@ -1,0 +1,44 @@
+[
+  {
+    "course_name": "Advanced Algorithms",
+    "professor_name": "Dr. Smith",
+    "notice_title": "Assignment 1 Released",
+    "notice_body": "Please check the course website for the details of Assignment 1.",
+    "post_date": "2024-01-15"
+  },
+  {
+    "course_name": "Machine Learning",
+    "professor_name": "Dr. Johnson",
+    "notice_title": "Project Proposal Submission",
+    "notice_body": "The deadline for project proposal submission is next Monday.",
+    "post_date": "2024-02-10"
+  },
+  {
+    "course_name": "Data Structures",
+    "professor_name": "Dr. Williams",
+    "notice_title": "Midterm Exam Schedule",
+    "notice_body": "The midterm exam will be held on March 20th during class hours.",
+    "post_date": "2024-03-05"
+  },
+  {
+    "course_name": "Machine Learning",
+    "professor_name": "Dr. Johnson",
+    "notice_title": "Lab 3 Instructions",
+    "notice_body": "Lab 3 instructions have been posted. Please complete it by the end of this week.",
+    "post_date": "2024-03-18"
+  },
+  {
+    "course_name": "Machine Learning",
+    "professor_name": "Dr. Johnson",
+    "notice_title": "Final Exam Topics",
+    "notice_body": "The final exam will cover chapters 1 to 10.",
+    "post_date": "2024-04-22"
+  },
+  {
+    "course_name": "Database Systems",
+    "professor_name": "Dr. Miller",
+    "notice_title": "Homework 2 Due Date",
+    "notice_body": "Homework 2 is due on May 5th. Please submit it via the course portal.",
+    "post_date": "2024-05-01"
+  }
+]

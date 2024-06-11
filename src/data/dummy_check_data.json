@@ -1,0 +1,137 @@
+[
+  {
+    "name": "id-2019312219-java2024-764bf8659c-lzgtd",
+    "ip": "10.42.0.92",
+    "labels": {
+      "app": "id-2019312219-java2024",
+      "class_id": "id-java2024",
+      "pod_template_hash": "764bf8659c",
+      "professor_id": "id-2019312218",
+      "student_id": "id-2019312219",
+      "vscode": "yes",
+      "ssh": "no"
+    },
+    "creationTimestamp": "2024-05-30T07:52:59Z",
+    "status": "Running"
+  },
+  {
+    "name": "id-2019312433-java2024-549bfc5445-z658v",
+    "ip": "10.42.0.93",
+    "labels": {
+      "app": "id-2019312433-java2024",
+      "class_id": "id-java2024",
+      "pod_template_hash": "764bf8659c",
+      "professor_id": "id-2019312218",
+      "student_id": "id-2019312433",
+      "vscode": "yes",
+      "ssh": "no"
+    },
+    "creationTimestamp": "2024-05-30T07:53:00Z",
+    "status": "Error"
+  },
+  {
+    "name": "id-2019312557-java2024-34fbc6545d-h567v",
+    "ip": "10.42.0.94",
+    "labels": {
+      "app": "id-2019312557-java2024",
+      "class_id": "id-java2024",
+      "pod_template_hash": "764bf8659c",
+      "professor_id": "id-2019312218",
+      "student_id": "id-2019312557",
+      "vscode": "yes",
+      "ssh": "no"
+    },
+    "creationTimestamp": "2024-05-30T07:53:01Z",
+    "status": "Running"
+  },
+  {
+    "name": "id-2019321678-python2024-78bfa6546d-k912x",
+    "ip": "10.42.0.95",
+    "labels": {
+      "app": "id-2019321678-python2024",
+      "class_id": "id-python2024",
+      "pod_template_hash": "764bf8659c",
+      "professor_id": "id-2019321677",
+      "student_id": "id-2019321678",
+      "vscode": "yes",
+      "ssh": "no"
+    },
+    "creationTimestamp": "2024-05-30T08:00:00Z",
+    "status": "Running"
+  },
+  {
+    "name": "id-2019321890-python2024-12fdc8765a-m357y",
+    "ip": "10.42.0.96",
+    "labels": {
+      "app": "id-2019321890-python2024",
+      "class_id": "id-python2024",
+      "pod_template_hash": "764bf8659c",
+      "professor_id": "id-2019321677",
+      "student_id": "id-2019321890",
+      "vscode": "no",
+      "ssh": "yes"
+    },
+    "creationTimestamp": "2024-05-30T08:00:01Z",
+    "status": "Running"
+  },
+  {
+    "name": "id-2019321456-python2024-45baf6546d-r568u",
+    "ip": "10.42.0.97",
+    "labels": {
+      "app": "id-2019321456-python2024",
+      "class_id": "id-python2024",
+      "pod_template_hash": "764bf8659c",
+      "professor_id": "id-2019321677",
+      "student_id": "id-2019321456",
+      "vscode": "yes",
+      "ssh": "no"
+    },
+    "creationTimestamp": "2024-05-30T08:00:02Z",
+    "status": "Running"
+  },
+  {
+    "name": "id-2019331789-cpp2024-98bfa7654e-h921z",
+    "ip": "10.42.0.98",
+    "labels": {
+      "app": "id-2019331789-cpp2024",
+      "class_id": "id-cpp2024",
+      "pod_template_hash": "764bf8659c",
+      "professor_id": "id-2019331788",
+      "student_id": "id-2019331789",
+      "vscode": "yes",
+      "ssh": "no"
+    },
+    "creationTimestamp": "2024-05-30T08:05:00Z",
+    "status": "Error"
+  },
+  {
+    "name": "id-2019331992-cpp2024-67cda9876b-k348v",
+    "ip": "10.42.0.99",
+    "labels": {
+      "app": "id-2019331992-cpp2024",
+      "class_id": "id-cpp2024",
+      "pod_template_hash": "764bf8659c",
+      "professor_id": "id-2019331788",
+      "student_id": "id-2019331992",
+      "vscode": "no",
+      "ssh": "yes"
+    },
+    "creationTimestamp": "2024-05-30T08:05:01Z",
+    "status": "Running"
+  },
+  {
+    "name": "id-2019331564-cpp2024-34baf7654d-l786y",
+    "ip": "10.42.0.100",
+    "labels": {
+      "app": "id-2019331564-cpp2024",
+      "class_id": "id-cpp2024",
+      "pod_template_hash": "764bf8659c",
+      "professor_id": "id-2019331788",
+      "student_id": "id-2019331564",
+      "vscode": "yes",
+      "ssh": "no"
+    },
+    "creationTimestamp": "2024-05-30T08:05:02Z",
+    "status": "Running"
+  }
+]

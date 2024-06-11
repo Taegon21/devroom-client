@@ -1,0 +1,109 @@
+.noticeItem {
+  border-bottom: 1px solid var(--white-color);
+  padding: 15px 15px 20px 10px;
+  cursor: pointer;
+}
+
+.noticeTitle {
+  font-family: "Pretendard-bold";
+  margin-bottom: 10px;
+}
+
+.noticeHeader {
+  font-size: 20px;
+  font-family: "Pretendard-bold";
+  padding-bottom: 20px;
+}
+
+.noticeBody {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: var(--white-color);
+  overflow-wrap: break-word;
+}
+
+.noticeFooter {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: #777;
+}
+
+.courseName {
+  font-family: "Pretendard-bold";
+  color: var(--orange-color);
+}
+
+.professorName {
+  font-style: italic;
+  color: var(--orange-color);
+  font-size: 18px;
+}
+
+.postDate {
+  margin-left: auto;
+
+  white-space: nowrap;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .noticeHeader {
+    font-size: 18px;
+    padding-bottom: 15px;
+  }
+
+  .noticeTitle {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .noticeBody {
+    font-size: 14px;
+    margin-bottom: 8px;
+    overflow-wrap: break-word;
+  }
+
+  .noticeFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .postDate {
+    margin-left: 0;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .noticeItem {
+    width: 320px;
+    padding: 10px 5px 15px 5px;
+  }
+  .noticeHeader {
+    font-size: 16px;
+    padding-bottom: 10px;
+  }
+
+  .noticeTitle {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .noticeBody {
+    font-size: 12px;
+    margin-bottom: 6px;
+    overflow-wrap: break-word;
+  }
+
+  .noticeFooter {
+    font-size: 12px;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .postDate {
+    font-size: 12px;
+  }
+}

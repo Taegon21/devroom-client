@@ -1,0 +1,70 @@
+.toggleButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggleButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 80px;
+  height: 35px;
+  background-color: #f6f6f6;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 5px 5px;
+  transition: background-color 0.3s;
+}
+
+.toggleButton svg {
+  transition: transform 0.3s;
+  height: 30px;
+  width: 30px;
+}
+
+.darkMode {
+  background-color: var(--lightgray-color);
+}
+
+.moonIcon,
+.sunIcon {
+  position: absolute;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.moonIcon {
+  left: 5px;
+  opacity: 0;
+}
+
+.sunIcon {
+  right: 5px;
+  opacity: 1;
+}
+
+.toggleButton.darkMode .moonIcon {
+  opacity: 1;
+}
+
+.toggleButton.darkMode .sunIcon {
+  opacity: 0;
+}
+
+.toggleButton::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 17.5px;
+  transform: translate(-50%, -50%);
+  width: 35px;
+  height: 35px;
+  background-color: var(--orange-color);
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggleButton.darkMode::before {
+  transform: translateX(35px) translate(-20%, -50%);
+}

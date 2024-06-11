@@ -1,0 +1,41 @@
+.gridContainer {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .gridItem {
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--orange-color);
+    color: var(--lightgray2-color);
+  }
+}
+
+@media (max-width: 430px) {
+  .gridContainer {
+    width: 300px;
+    padding: 0;
+  }
+}
+
+.statusRunning {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: green;
+  border-radius: 50%;
+}
+
+.statusNotRunning {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: red;
+  border-radius: 50%;
+}

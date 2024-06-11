@@ -1,0 +1,66 @@
+[
+  {
+    "type": "vscode",
+    "port_number": 8080,
+    "ssh_commands": null,
+    "course_name": "Advanced Algorithms",
+    "professor_name": "Dr. Smith",
+    "semester": "Fall 2023",
+    "language": "C++"
+  },
+  {
+    "type": "ssh",
+    "port_number": null,
+    "ssh_commands": [
+      "ssh user@192.168.1.1",
+      "ssh -p 2222 user@192.168.1.2",
+      "ssh -i ~/.ssh/id_rsa user@192.168.1.3"
+    ],
+    "course_name": "Machine Learning",
+    "professor_name": "Dr. Johnson",
+    "semester": "Spring 2024",
+    "language": "Python"
+  },
+  {
+    "type": "vscode",
+    "port_number": 3000,
+    "ssh_commands": null,
+    "course_name": "Data Structures",
+    "professor_name": "Dr. Williams",
+    "semester": "Spring 2024",
+    "language": "Java"
+  },
+  {
+    "type": "ssh",
+    "port_number": null,
+    "ssh_commands": [
+      "ssh -L 8080:localhost:8080 user@192.168.1.4",
+      "ssh -R 9090:localhost:9090 user@192.168.1.5"
+    ],
+    "course_name": "Operating Systems",
+    "professor_name": "Dr. Brown",
+    "semester": "Spring 2024",
+    "language": "C"
+  },
+  {
+    "type": "vscode",
+    "port_number": 5000,
+    "ssh_commands": null,
+    "course_name": "Computer Networks",
+    "professor_name": "Dr. Davis",
+    "semester": "Fall 2023",
+    "language": "Go"
+  },
+  {
+    "type": "ssh",
+    "port_number": null,
+    "ssh_commands": [
+      "ssh -L 3306:localhost:3306 user@192.168.1.6",
+      "ssh -R 5432:localhost:5432 user@192.168.1.7"
+    ],
+    "course_name": "Database Systems",
+    "professor_name": "Dr. Miller",
+    "semester": "Spring 2023",
+    "language": "SQL"
+  }
+]

@@ -1,0 +1,150 @@
+.container {
+  padding-bottom: 100px;
+}
+.headerTitle {
+  font-size: 24px;
+  font-family: "Pretendard-bold";
+  padding: 10px 0;
+}
+
+.header {
+  display: flex;
+  /* // 중앙정렬 */
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+}
+
+.searchBox {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  min-width: 300px;
+}
+.viewSelector {
+  margin-top: 10px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 15px 40px 15px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: var(--gray-color);
+}
+
+.searchInput:focus-visible {
+  border-color: var(--orange-color);
+  outline: var(--orange-color);
+  outline-width: 5px;
+}
+
+.searchInput:focus + .searchIcon {
+  fill: var(--orange-color);
+}
+
+.viewSelector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.helpItems {
+  display: flex;
+  gap: 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, 300px);
+}
+
+.column {
+  flex-direction: column;
+}
+
+.category {
+  padding-bottom: 20px;
+}
+
+.categoryTitle {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.categoryList {
+  position: fixed;
+  top: 280px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--orange-color);
+  padding: 10px;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.categoryButton {
+  background-color: transparent;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  color: var(--white-color);
+}
+
+.categoryButton:hover {
+  color: var(--gray-color);
+}
+
+.mainContent {
+  flex-grow: 1;
+}
+
+.bodyContent {
+  padding-top: 20px;
+  padding-right: 100px;
+}
+
+@media (max-width: 1024px) {
+  .searchBox {
+    width: 320px;
+  }
+  .viewSelector {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .viewSelector {
+    display: none;
+  }
+  .categoryList {
+    display: none;
+  }
+
+  .helpItems {
+    flex-direction: column !important;
+    width: 100%;
+  }
+
+  .grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .column {
+    width: 320px;
+  }
+}
