@@ -6,30 +6,21 @@ import LogoIcon from "/public/icons/Logo1.svg";
 import EmailIcon from "/public/icons/Email.svg";
 import PasswordIcon from "/public/icons/Password.svg";
 import Link from "next/link";
-import { useAuthStore, authenticateUser } from "@/store/authStore";
 import { useRouter } from "next/navigation";
 import WarningModal from "@/components/common/WarningModal";
 import { authenticateCognitoUser } from "@/app/api/auth/auth";
 import { useUserStore } from "@/store/userStore";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [showModal, setShowModal] = useState(false);
-
   const router = useRouter();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>(""); 
+  const [showModal, setShowModal] = useState<boolean>(false); 
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
-  // Zustand 스토어의 상태 업데이트 함수들
-  const {
-    setEmail: setGlobalEmail,
-    setName,
-    setRole,
-    setStudentId,
-    setIdToken,
-  } = useUserStore();
+  const { login: storeLogin } = useUserStore();
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       const { idToken, name, role, studentId } = await authenticateCognitoUser(
@@ -38,11 +29,7 @@ export default function Login() {
       );
 
       // Zustand 스토어에 로그인 정보 저장
-      setGlobalEmail(email);
-      setName(name);
-      setRole(role);
-      setStudentId(studentId);
-      setIdToken(idToken);
+      storeLogin({ email, name, role, studentId, idToken });
 
       console.log("Access Token:", idToken);
       console.log("Name:", name);
@@ -50,24 +37,68 @@ export default function Login() {
       console.log("Student ID:", studentId);
 
       // 사용자 역할에 따라 리디렉션
-      if (role === "Student") {
-        router.push("/container/all");
-      } else if (role === "Professor") {
-        router.push("/create-container");
-      } else {
-        router.push("/");
+      switch (role) {
+        case "Student":
+          router.push("/container/all");
+          break;
+        case "Professor":
+          router.push("/create-container");
+          break;
+        default:
+          router.push("/");
+          break;
       }
     } catch (err) {
       console.error("Login Error:", err);
-      setError("Invalid email or password");
+      setErrorMessage("Invalid password or need to verify email.");
       setShowModal(true);
     }
   };
 
   const closeModal = () => {
     setShowModal(false);
-    setError("");
+    setErrorMessage("");
   };
+
+  // const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   try {
+  //     const { idToken, name, role, studentId } = await authenticateCognitoUser(
+  //       email,
+  //       password
+  //     );
+
+  //     // Zustand 스토어에 로그인 정보 저장
+  //     login({ email, name, role, studentId, idToken });
+
+  //     console.log("Access Token:", idToken);
+  //     console.log("Name:", name);
+  //     console.log("Role:", role);
+  //     console.log("Student ID:", studentId);
+
+  //     // 사용자 역할에 따라 리디렉션
+  //     switch (role) {
+  //       case "Student":
+  //         router.push("/container/all");
+  //         break;
+  //       case "Professor":
+  //         router.push("/create-container");
+  //         break;
+  //       default:
+  //         router.push("/");
+  //         break;
+  //     }
+  //   } catch (err) {
+  //     console.error("Login Error:", err);
+  //     setError("Invalid password or need to verify email.");
+  //     setShowModal(true);
+  //   }
+  // };
+
+  // const closeModal = () => {
+  //   setShowModal(false);
+  //   setError("");
+  // };
 
   return (
     <div className={styles.container}>
@@ -111,6 +142,7 @@ export default function Login() {
                 <PasswordIcon className={styles.icon} />
               </div>
               <div className={styles.forgotPassword}>Forgot password?</div>
+
               <button type="submit" className={styles.loginButton}>
                 Login now
               </button>
@@ -120,11 +152,20 @@ export default function Login() {
               <Link href="/signup" className={styles.signupButton}>
                 Sign up now
               </Link>
+
+              <div className={styles.linkContainer}>
+                <div className={styles.textAlready}>Need to verify email?</div>
+                <Link href="/verify-email" className={styles.loginLink}>
+                  verify email
+                </Link>
+              </div>
             </div>
           </form>
         </div>
       </div>
-      {showModal && <WarningModal message={error} onClose={closeModal} />}
+      {showModal && (
+        <WarningModal message={errorMessage || ""} onClose={closeModal} />
+      )}
       <div className={styles.right}>
         <div className={styles.background} />
       </div>

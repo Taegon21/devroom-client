@@ -5,8 +5,9 @@ import styles from "./page.module.css";
 import LogoIcon from "/public/icons/Logo1.svg";
 import EmailIcon from "/public/icons/Email.svg";
 import Link from "next/link";
-import { verifyEmail } from "@/app/api/auth/auth"; // 가정된 이메일 인증 API 함수
+import { verifyEmail } from "@/app/api/auth/auth";
 import { useUserStore } from "@/store/userStore";
+import { useRouter } from "next/navigation";
 
 export default function VerifyEmail() {
   const { email, setEmail } = useUserStore((state) => ({
@@ -15,16 +16,17 @@ export default function VerifyEmail() {
   }));
 
   const [code, setCode] = useState("");
-  const [message, setMessage] = useState("");
+  const router = useRouter();
 
   const handleVerifyEmail = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       await verifyEmail({ username: email, code });
-      setMessage("Email verification successful! You can now login.");
+      router.push("/verify-email");
+      alert("Email verification successful! You can now login.");
     } catch (err) {
       console.error("Email verification failed:", err);
-      setMessage("Email verification failed. Please try again.");
+      alert("Email verification failed. Please try again.");
     }
   };
 
@@ -77,7 +79,6 @@ export default function VerifyEmail() {
           <button type="submit" className={styles.createAccountButton}>
             Verify Email
           </button>
-          {message && <div className={styles.message}>{message}</div>}
           <div className={styles.linkContainer}>
             <div className={styles.textAlready}>already have an account?</div>
             <Link href="/login" className={styles.loginLink}>

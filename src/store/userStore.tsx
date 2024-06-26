@@ -1,18 +1,22 @@
-// store.js
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import Cookies from "js-cookie";
 
 interface UserState {
   email: string;
   name: string;
   role: string;
   studentId: string;
-  idToken: string;
+  isLoggedIn: boolean;
   setEmail: (email: string) => void;
-  setName: (name: string) => void;
-  setRole: (role: string) => void;
-  setStudentId: (studentId: string) => void;
-  setIdToken: (idToken: string) => void;
+  login: (user: {
+    email: string;
+    name: string;
+    role: string;
+    studentId: string;
+    idToken: string;
+  }) => void; // 로그인 함수
+  logout: () => void; // 로그아웃 함수
 }
 
 export const useUserStore = create(
@@ -22,22 +26,36 @@ export const useUserStore = create(
       name: "",
       role: "",
       studentId: "",
-      idToken: "",
+      isLoggedIn: false, // 초기 로그인 상태는 false
       setEmail: (email) => set({ email }),
-      setName: (name) => set({ name }),
-      setRole: (role) => set({ role }),
-      setStudentId: (studentId) => set({ studentId }),
-      setIdToken: (idToken) => set({ idToken }),
+
+      login: ({ email, name, role, studentId, idToken }) => {
+        Cookies.set("idToken", idToken, { expires: 1 }); //쿠키에 ID 토큰 저장유효기간 1일
+        set({ email, name, role, studentId, isLoggedIn: true });
+      },
+
+      logout: () => {
+        Cookies.remove("idToken");
+        set({
+          email: "",
+          name: "",
+          role: "",
+          studentId: "",
+          isLoggedIn: false,
+        });
+
+        localStorage.clear();
+      },
     }),
     {
-      name: "userData",
+      name: "userData", // Zustand 스토어를 로컬 스토리지에 저장할 때 사용할 이름
       storage: {
         getItem: (name) => {
           const item = localStorage.getItem(name);
-          return item ? JSON.parse(item) : null; // 문자열을 객체로 파싱
+          return item ? JSON.parse(item) : null;
         },
         setItem: (name, value) => {
-          localStorage.setItem(name, JSON.stringify(value)); // 객체를 문자열로 직렬화
+          localStorage.setItem(name, JSON.stringify(value));
         },
         removeItem: (name) => {
           localStorage.removeItem(name);

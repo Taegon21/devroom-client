@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useState } from "react";
 import styles from "./layout.module.css";
 import { useAuthStore } from "@/store/authStore";
 import Link from "next/link";
-import { redirect, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import LeftArrowIcon from "/public/icons/LeftArrow.svg";
 import HamburgerIcon from "/public/icons/Hamburger.svg";
@@ -15,15 +15,8 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const user = useAuthStore((state) => state.user);
-  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
-  const isLoading = useAuthStore((state) => state.isLoading);
-  const [isSidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
-  // useEffect(() => {
-  //   if (!isLoggedIn && !isLoading) {
-  //     redirect("/onboarding");
-  //   }
-  // }, [isLoggedIn, isLoading]);
+  const [isSidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
   const navigation = usePathname();
 

@@ -92,8 +92,25 @@
   color: var(--lightgray-color);
   font-size: 16px;
   text-align: right;
+  font-family: "Pretendard";
   text-decoration: underline;
   cursor: pointer;
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.textAlready {
+  color: var(--lightgray-color);
+  font-size: 16px;
+  font-family: "Pretendard";
+}
+.loginLink {
+  color: var(--orange-color);
 }
 
 .loginButton {

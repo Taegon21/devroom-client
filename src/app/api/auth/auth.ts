@@ -1,4 +1,3 @@
-// auth.ts
 import {
   CognitoUserPool,
   CognitoUserAttribute,
@@ -54,7 +53,7 @@ export function signUp({
   onSuccess,
   onFailure,
 }: SignUpParams): void {
-  const username = email; // 이메일을 사용자 이름으로 사용
+  const username = email;
   const attributeList = [
     new CognitoUserAttribute({
       Name: "email",
@@ -100,12 +99,11 @@ export function authenticateCognitoUser(
   };
 
   const cognitoUser = new CognitoUser(userData);
-
   return new Promise((resolve, reject) => {
     cognitoUser.authenticateUser(authenticationDetails, {
       onSuccess: (result) => {
         const idToken = result.getIdToken().getJwtToken();
-        const claims = result.getIdToken().decodePayload(); // 토큰에서 클레임 디코드
+        const claims = result.getIdToken().decodePayload();
 
         // custom 속성 가져오기
         const name = claims["custom:name"] || "";
