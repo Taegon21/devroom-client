@@ -19,11 +19,11 @@ export default function Layout({ children }: LayoutProps) {
   const isLoading = useAuthStore((state) => state.isLoading);
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
-  useEffect(() => {
-    if (!isLoggedIn && !isLoading) {
-      redirect("/onboarding");
-    }
-  }, [isLoggedIn, isLoading]);
+  // useEffect(() => {
+  //   if (!isLoggedIn && !isLoading) {
+  //     redirect("/onboarding");
+  //   }
+  // }, [isLoggedIn, isLoading]);
 
   const navigation = usePathname();
 
