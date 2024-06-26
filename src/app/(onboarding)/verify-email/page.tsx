@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import LogoIcon from "/public/icons/Logo1.svg";
 import EmailIcon from "/public/icons/Email.svg";
 import Link from "next/link";
-import { verifyEmail } from "@/app/api/auth/auth";
+import { verifyEmail } from "@/api/auth/auth";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "next/navigation";
 

@@ -7,7 +7,7 @@ import PasswordIcon from "/public/icons/Password.svg";
 import UsernameIcon from "/public/icons/Username.svg";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { signUp } from "@/app/api/auth/auth";
+import { signUp } from "@/api/auth/auth";
 import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/userStore";
 

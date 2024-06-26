@@ -48,7 +48,7 @@ export const useUserStore = create(
       },
     }),
     {
-      name: "userData", // Zustand 스토어를 로컬 스토리지에 저장할 때 사용할 이름
+      name: "userData",
       storage: {
         getItem: (name) => {
           const item = localStorage.getItem(name);

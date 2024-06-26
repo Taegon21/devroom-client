@@ -8,14 +8,14 @@ import PasswordIcon from "/public/icons/Password.svg";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import WarningModal from "@/components/common/WarningModal";
-import { authenticateCognitoUser } from "@/app/api/auth/auth";
+import { authenticateCognitoUser } from "@/api/auth/auth";
 import { useUserStore } from "@/store/userStore";
 
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>(""); 
-  const [showModal, setShowModal] = useState<boolean>(false); 
+  const [password, setPassword] = useState<string>("");
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const { login: storeLogin } = useUserStore();
