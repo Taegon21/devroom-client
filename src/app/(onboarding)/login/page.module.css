@@ -29,7 +29,6 @@
   gap: 40px;
   align-items: center;
   font-size: 24px;
-  font-family: "Pretendard-bold";
   font-weight: 700;
   color: var(--white-color);
   text-decoration: none;
@@ -39,13 +38,12 @@
   color: var(--lightgray-color);
   font-size: 18px;
   padding-top: 15px;
-  font-family: "Pretendard-bold";
+  font-weight: 700;
 }
 .grayText2 {
   color: var(--lightgray-color);
   font-size: 16px;
   padding-top: 15px;
-  font-family: "Pretendard";
 }
 
 .formContainer {
@@ -92,7 +90,6 @@
   color: var(--lightgray-color);
   font-size: 16px;
   text-align: right;
-  font-family: "Pretendard";
   text-decoration: underline;
   cursor: pointer;
 }
@@ -107,7 +104,6 @@
 .textAlready {
   color: var(--lightgray-color);
   font-size: 16px;
-  font-family: "Pretendard";
 }
 .loginLink {
   color: var(--orange-color);
@@ -120,7 +116,6 @@
   color: var(--white-color);
   border-radius: 10px;
   font-size: 16px;
-  font-family: "Pretendard-bold";
   font-weight: 700;
   margin-top: 30px;
   display: flex;
@@ -162,7 +157,6 @@
   color: var(--orange-color);
   border-radius: 10px;
   font-size: 16px;
-  font-family: "Pretendard-bold";
   font-weight: 700;
   display: flex;
   justify-content: center;

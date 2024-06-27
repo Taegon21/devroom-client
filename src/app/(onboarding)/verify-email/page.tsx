@@ -20,6 +20,10 @@ export default function VerifyEmail() {
 
   const handleVerifyEmail = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!email || !code) {
+      alert("Please fill out all fields.");
+      return;
+    }
     try {
       await verifyEmail({ username: email, code });
       router.push("/verify-email");

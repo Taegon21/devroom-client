@@ -22,6 +22,10 @@ export default function Signup() {
 
   const handleSignUp = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    if (!email || !password || !name || !role || !studentId) {
+      alert("Please fill out all fields.");
+      return;
+    }
     signUp({
       email,
       password,
@@ -76,24 +80,28 @@ export default function Signup() {
             </div>
           </div>
           <div className={styles.inputContainer}>
-            <label htmlFor="username" className={styles.grayText2}>
+            <label htmlFor="role" className={styles.grayText2}>
               Group (Student or Professor)
             </label>
             <div className={styles.inputBox}>
-              <input
-                type="text"
+              <select
                 id="role"
-                className={styles.input}
-                placeholder="Enter your Group (Student or Professor)"
+                className={styles.inputSelect}
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-              />
+              >
+                <option value="" disabled>
+                  Select your group
+                </option>
+                <option value="Student">Student</option>
+                <option value="Professor">Professor</option>
+              </select>
               <UsernameIcon className={styles.icon} />
             </div>
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="username" className={styles.grayText2}>
-              ID
+              Student or Professor ID
             </label>
             <div className={styles.inputBox}>
               <input

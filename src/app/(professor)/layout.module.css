@@ -1,6 +1,6 @@
 .layout {
   display: flex;
-  min-height: 100dvh;
+  min-height: 100vh;
   height: 100%;
   background-color: var(--gray-color);
 }
@@ -28,7 +28,6 @@
 
 .school {
   font-size: 24px;
-  font-family: "Pretendard-bold";
   font-weight: 700;
   height: 80px;
   display: flex;
@@ -47,19 +46,13 @@
   display: flex;
   padding-bottom: 5px;
   gap: 5px;
-  font-family: "Pretendard-bold";
   font-weight: 700;
   font-size: 20px;
 }
 
-.studentsId {
-  font-family: "Pretendard-Regular";
-  font-size: 16px;
-}
-
+.studentsId,
 .studentId {
-  font-family: "Pretendard-Regular";
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .menu {
@@ -77,14 +70,12 @@
   padding: 10px;
   border-radius: 10px;
   font-size: 18px;
-  font-family: "Pretendard-bold";
   font-weight: 700;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .menuText {
   font-size: 18px;
-  font-family: "Pretendard-bold";
   font-weight: 700;
 }
 
@@ -95,7 +86,6 @@
 }
 
 .subMenu div {
-  font-family: "Pretendard-Medium";
   font-size: 16px;
 }
 
@@ -108,7 +98,6 @@
   color: var(--white-color);
   text-decoration: none;
   font-size: 20px;
-  font-family: "Pretendard-bold";
   font-weight: 700;
 }
 
@@ -131,7 +120,7 @@
 .left {
   background-color: var(--black-color);
   width: 100%;
-  min-height: 100dvh;
+  min-height: 100vh;
   transition: 0.15s ease;
 }
 
@@ -141,8 +130,8 @@
   align-items: center;
   padding: 50px 40px 0;
   font-size: 24px;
-  font-family: "Pretendard-Medium";
   gap: 10px;
+  font-weight: 500;
   background-color: var(--black-color);
 }
 
