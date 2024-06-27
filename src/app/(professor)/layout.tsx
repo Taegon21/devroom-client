@@ -2,19 +2,19 @@
 
 import { ReactNode, useEffect, useState } from "react";
 import styles from "./layout.module.css";
-import { useAuthStore } from "@/store/authStore";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import LeftArrowIcon from "/public/icons/LeftArrow.svg";
 import HamburgerIcon from "/public/icons/Hamburger.svg";
+import { useUserStore } from "@/store/userStore";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const user = useAuthStore((state) => state.user);
+  const { name, role, studentId } = useUserStore((state) => state);
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
   const navigation = usePathname();
@@ -66,10 +66,10 @@ export default function Layout({ children }: LayoutProps) {
           />
           <div>
             <div className={styles.userInfo}>
-              <div>{user?.name}</div>
-              <div>{user?.isStudent ? "- 학생" : " - 교수"}</div>
+              <div>{name}</div>
+              <div>{role === "Student" ? "- 학생" : " - 교수"}</div>
             </div>
-            <div className={styles.studentsId}>{user?.studentId}</div>
+            <div className={styles.studentsId}>{studentId}</div>
           </div>
         </div>
         <div className={styles.menu}>
@@ -162,8 +162,8 @@ export default function Layout({ children }: LayoutProps) {
               className={styles.iconButton}
             />
           )}
-          <div className={styles.studentId}>{user?.name}</div>
-          <div className={styles.studentId}> / {user?.studentId}</div>
+          <div className={styles.studentId}>{name}</div>
+          <div className={styles.studentId}> / {studentId}</div>
         </div>
         <div
           className={`${styles.content} ${
