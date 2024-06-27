@@ -78,15 +78,15 @@ export default function Layout({ children }: LayoutProps) {
             <Image
               src="/icons/Space.svg"
               alt="container"
-              width={35}
-              height={35}
+              width={25}
+              height={25}
             />
             <div className={styles.menuText}>스페이스</div>
             <Image
               src="/icons/Down.svg"
               alt="container"
-              width={15}
-              height={15}
+              width={12}
+              height={12}
               className={styles.down}
             />
           </div>
@@ -126,8 +126,8 @@ export default function Layout({ children }: LayoutProps) {
               <Image
                 src="/icons/Notice.svg"
                 alt="notice"
-                width={35}
-                height={35}
+                width={25}
+                height={25}
               />
               <div>공지</div>
             </div>
@@ -137,15 +137,15 @@ export default function Layout({ children }: LayoutProps) {
               <Image
                 src="/icons/Message.svg"
                 alt="community"
-                width={35}
-                height={35}
+                width={25}
+                height={25}
               />
               <div>메세지</div>
             </div>
           </Link>
           <Link href="/help">
             <div className={`${styles.menuItem} ${isActive("/help")}`}>
-              <Image src="/icons/Help.svg" alt="help" width={35} height={35} />
+              <Image src="/icons/Help.svg" alt="help" width={25} height={25} />
               <div>도움말</div>
             </div>
           </Link>
@@ -154,8 +154,8 @@ export default function Layout({ children }: LayoutProps) {
               <Image
                 src="/icons/Mypage.svg"
                 alt="mypage"
-                width={35}
-                height={35}
+                width={22}
+                height={22}
               />
               <div>마이페이지</div>
             </div>
