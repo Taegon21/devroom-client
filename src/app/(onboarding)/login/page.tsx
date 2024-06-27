@@ -22,6 +22,10 @@ export default function Login() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!email || !password) {
+      alert("Please fill out all fields.");
+      return;
+    }
     try {
       const { idToken, name, role, studentId } = await authenticateCognitoUser(
         email,
@@ -59,46 +63,6 @@ export default function Login() {
     setShowModal(false);
     setErrorMessage("");
   };
-
-  // const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   try {
-  //     const { idToken, name, role, studentId } = await authenticateCognitoUser(
-  //       email,
-  //       password
-  //     );
-
-  //     // Zustand 스토어에 로그인 정보 저장
-  //     login({ email, name, role, studentId, idToken });
-
-  //     console.log("Access Token:", idToken);
-  //     console.log("Name:", name);
-  //     console.log("Role:", role);
-  //     console.log("Student ID:", studentId);
-
-  //     // 사용자 역할에 따라 리디렉션
-  //     switch (role) {
-  //       case "Student":
-  //         router.push("/container/all");
-  //         break;
-  //       case "Professor":
-  //         router.push("/create-container");
-  //         break;
-  //       default:
-  //         router.push("/");
-  //         break;
-  //     }
-  //   } catch (err) {
-  //     console.error("Login Error:", err);
-  //     setError("Invalid password or need to verify email.");
-  //     setShowModal(true);
-  //   }
-  // };
-
-  // const closeModal = () => {
-  //   setShowModal(false);
-  //   setError("");
-  // };
 
   return (
     <div className={styles.container}>

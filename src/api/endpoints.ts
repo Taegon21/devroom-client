@@ -6,7 +6,7 @@ export const API_ENDPOINTS = {
   },
   PROFESSOR: {
     CHECK: (professorId: string) => `/class/${professorId}/pod`,
-    CREATE: (professorId: string) => `/class/${professorId}/create`,
+    CREATE: (professorId: string) => `api/class/${professorId}/create`,
     DELETE: (professorId: string) => `/class/${professorId}/delete`,
   },
 };
