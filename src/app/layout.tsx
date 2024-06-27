@@ -1,6 +1,8 @@
+import React from "react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Providers from "@/utils/provider";
 
 export const metadata: Metadata = {
   title: {
@@ -44,7 +46,7 @@ export default function RootLayout({
       <body
         className={`${pretendardBold.className} ${pretendardMedium.className} ${pretendard.className}`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
