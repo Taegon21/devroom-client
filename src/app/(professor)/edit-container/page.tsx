@@ -2,31 +2,60 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 import Logo2Icon from "/public/icons/Logo2.svg";
-import dummy_edit_data from "@/data/dummy_edit_data.json";
 import WarningModal from "@/components/common/WarningModal";
+import { useDeleteClass, useFetchCheck } from "@/api/hooks/useProfessor";
+import { ContainerCheckSchema, ContainerDeleteSchema } from "@/type/schemas";
+import { IDelete } from "@/type/interfaces";
+import { useUserStore } from "@/store/userStore";
+
+const transformData = (input: ContainerCheckSchema[]): IDelete[] => {
+  if (!input) return [];
+  return input.map((item) => {
+    const output: IDelete = {
+      className: item.labels.class_id,
+      type: item.labels.connection,
+      status: item.status,
+      command:
+        item.labels.connection === "ssh" ? `ssh -p 22 user@${item.ip}` : "",
+    };
+    return output;
+  });
+};
 
 const EditContainerPage = () => {
+  const { studentId } = useUserStore();
   const [classId, setClassId] = useState<string>("");
   const [type, setType] = useState<string>("");
-  const [port, setPort] = useState<string>("");
+  const [containerStatus, setStatus] = useState<string>("");
   const [command, setCommand] = useState<string>("");
   const [showSaveModal, setShowSaveModal] = useState<boolean>(false);
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
 
-  const mockData = dummy_edit_data;
+  const { data: containerCheckData, isLoading, error } = useFetchCheck();
+  const { mutate: deleteClass, status } = useDeleteClass();
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const classData = transformData(containerCheckData);
 
   const handleClassIdChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedId = e.target.value;
     setClassId(selectedId);
 
-    const selectedData = mockData.find((data) => data.id === selectedId);
+    const selectedData = classData.find(
+      (data) => data.className === selectedId
+    );
     if (selectedData) {
       setType(selectedData.type);
-      setPort(selectedData.port);
+      setStatus(selectedData.status);
       setCommand(selectedData.command);
     } else {
       setType("");
-      setPort("");
+      setStatus("");
       setCommand("");
     }
   };
@@ -36,7 +65,7 @@ const EditContainerPage = () => {
     const containerData = {
       classId,
       type,
-      port: type === "vscode" ? port : undefined,
+      port: type === "vscode" ? containerStatus : undefined,
       command: type === "ssh" ? command : undefined,
     };
     console.log("Container Data:", containerData);
@@ -44,6 +73,12 @@ const EditContainerPage = () => {
   };
 
   const handleDelete = () => {
+    const deleteData: ContainerDeleteSchema = {
+      className: classId.replace(/^id-/, ""),
+      studentId: "all",
+    };
+    console.log("Delete Data:", deleteData);
+    deleteClass({ professorId: studentId, deleteData: deleteData });
     setShowDeleteModal(true);
   };
 
@@ -67,9 +102,9 @@ const EditContainerPage = () => {
                 required
               >
                 <option value="">Select Class ID</option>
-                {mockData.map((data) => (
-                  <option key={data.id} value={data.id}>
-                    {data.id}
+                {classData.map((data: IDelete, index: number) => (
+                  <option key={index} value={data.className}>
+                    {data.className}
                   </option>
                 ))}
               </select>
@@ -88,6 +123,18 @@ const EditContainerPage = () => {
                 <option value="ssh">SSH</option>
               </select>
             </div>
+
+            <div className={styles.formGroup}>
+              <label htmlFor="port">Status</label>
+              <input
+                type="text"
+                id="port"
+                value={containerStatus}
+                onChange={(e) => setStatus(e.target.value)}
+                required
+                disabled={type !== "vscode"}
+              />
+            </div>
             <div className={styles.formGroup}>
               <label htmlFor="command">명령어</label>
               <input
@@ -97,17 +144,6 @@ const EditContainerPage = () => {
                 onChange={(e) => setCommand(e.target.value)}
                 required
                 disabled={type !== "ssh"}
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="port">Port 번호</label>
-              <input
-                type="text"
-                id="port"
-                value={port}
-                onChange={(e) => setPort(e.target.value)}
-                required
-                disabled={type !== "vscode"}
               />
             </div>
             <div className={styles.buttonGroup}>

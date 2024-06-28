@@ -9,14 +9,7 @@ export const metadata: Metadata = {
     default: "DevRoom",
     template: "DevRoom| %s",
   },
-  icons: [
-    { url: "/favicon.ico", sizes: "any" },
-    {
-      url: "/favicon.png",
-      sizes: "32x32",
-      type: "image/png",
-    },
-  ],
+  icons: [{ url: "/favicon.ico", sizes: "any" }],
 };
 
 const pretendard = localFont({
