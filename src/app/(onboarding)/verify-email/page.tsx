@@ -26,7 +26,7 @@ export default function VerifyEmail() {
     }
     try {
       await verifyEmail({ username: email, code });
-      router.push("/verify-email");
+      router.push("/login");
       alert("Email verification successful! You can now login.");
     } catch (err) {
       console.error("Email verification failed:", err);

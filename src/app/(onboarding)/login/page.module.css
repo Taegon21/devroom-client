@@ -123,6 +123,8 @@
   align-items: center;
   text-decoration: none;
   cursor: pointer;
+  border: none;
+  outline: none;
 }
 .divierContent {
   display: flex;
