@@ -2,7 +2,6 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 import Logo2Icon from "/public/icons/Logo2.svg";
-import WarningModal from "@/components/common/WarningModal";
 import { useDeleteClass, useFetchCheck } from "@/api/hooks/useProfessor";
 import { ContainerCheckSchema, ContainerDeleteSchema } from "@/type/schemas";
 import { IDelete } from "@/type/interfaces";
@@ -28,8 +27,6 @@ const EditContainerPage = () => {
   const [type, setType] = useState<string>("");
   const [containerStatus, setStatus] = useState<string>("");
   const [command, setCommand] = useState<string>("");
-  const [showSaveModal, setShowSaveModal] = useState<boolean>(false);
-  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
 
   const { data: containerCheckData, isLoading, error } = useFetchCheck();
   const { mutate: deleteClass, status } = useDeleteClass();
@@ -69,7 +66,6 @@ const EditContainerPage = () => {
       command: type === "ssh" ? command : undefined,
     };
     console.log("Container Data:", containerData);
-    setShowSaveModal(true);
   };
 
   const handleDelete = () => {
@@ -79,7 +75,6 @@ const EditContainerPage = () => {
     };
     console.log("Delete Data:", deleteData);
     deleteClass({ professorId: studentId, deleteData: deleteData });
-    setShowDeleteModal(true);
   };
 
   return (
@@ -88,8 +83,10 @@ const EditContainerPage = () => {
       <div className={styles.container}>
         <div className={styles.leftContainer}>
           <Logo2Icon />
-          <div className={styles.logoText}>Edit Container</div>
-          <div className={styles.grayText}>Edit or delete your container</div>
+          <div className={styles.logoText}>Delete Container</div>
+          <div className={styles.grayText}>
+            Choose Class ID to delete your container
+          </div>
         </div>
         <div className={styles.rightContainer}>
           <form className={styles.form} onSubmit={handleSave}>
@@ -111,17 +108,13 @@ const EditContainerPage = () => {
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="type">Type</label>
-              <select
+              <input
                 id="type"
                 value={type}
                 onChange={(e) => setType(e.target.value)}
                 required
-                disabled={!classId}
-              >
-                <option value=""></option>
-                <option value="vscode">VSCode</option>
-                <option value="ssh">SSH</option>
-              </select>
+                disabled={true}
+              ></input>
             </div>
 
             <div className={styles.formGroup}>
@@ -132,24 +125,10 @@ const EditContainerPage = () => {
                 value={containerStatus}
                 onChange={(e) => setStatus(e.target.value)}
                 required
-                disabled={type !== "vscode"}
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="command">명령어</label>
-              <input
-                type="text"
-                id="command"
-                value={command}
-                onChange={(e) => setCommand(e.target.value)}
-                required
-                disabled={type !== "ssh"}
+                disabled={true}
               />
             </div>
             <div className={styles.buttonGroup}>
-              <button type="submit" className={styles.saveButton}>
-                수정
-              </button>
               <button
                 type="button"
                 className={styles.deleteButton}
@@ -161,18 +140,6 @@ const EditContainerPage = () => {
           </form>
         </div>
       </div>
-      {showSaveModal && (
-        <WarningModal
-          message={`"${classId}" 컨테이너가 수정되었습니다`}
-          onClose={() => setShowSaveModal(false)}
-        />
-      )}
-      {showDeleteModal && (
-        <WarningModal
-          message={`"${classId}" 컨테이너가 삭제되었습니다`}
-          onClose={() => setShowDeleteModal(false)}
-        />
-      )}
     </>
   );
 };

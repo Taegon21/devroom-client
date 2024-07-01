@@ -103,7 +103,7 @@ export default function Layout({ children }: LayoutProps) {
               <div
                 className={`${styles.menuItem} ${isActive("/edit-container")}`}
               >
-                <div>컨테이너 수정 및 삭제</div>
+                <div>컨테이너 삭제</div>
               </div>
             </Link>
           </div>
