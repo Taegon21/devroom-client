@@ -37,6 +37,7 @@ export const useCreateClass = () => {
     },
     onError: (error) => {
       alert(`Error: ${error.message}`);
+      console.log("error", error);
     },
   });
 };

@@ -24,7 +24,7 @@ export interface ClassCreationSchema {
   studentIds: string[];
   options: { [key: string]: string };
   command: string[];
-  customScript: string;
+  customScript: string[];
 }
 
 export interface ContainerCheckSchema {

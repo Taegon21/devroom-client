@@ -11,7 +11,7 @@ const CreateContainerPage = () => {
   const [classId, setClassId] = useState<string>("");
   const [studentIds, setStudentIds] = useState<string[]>([""]);
   const [type, setType] = useState<string>("vscode");
-  const [script, setScript] = useState<string>("");
+  const [scripts, setScripts] = useState<string[]>([]);
 
   const { mutate: createClass, status } = useCreateClass();
 
@@ -20,7 +20,7 @@ const CreateContainerPage = () => {
     studentIds,
     options: type === "vscode" ? { vscode: "yes" } : { ssh: "yes" },
     command: [],
-    customScript: script,
+    customScript: scripts,
   };
 
   const handleStudentIdChange = (index: number, value: string) => {
@@ -39,8 +39,17 @@ const CreateContainerPage = () => {
     setStudentIds(newStudentIds);
   };
 
+  const handleScriptChange = (value: string) => {
+    if (scripts.includes(value)) {
+      setScripts(scripts.filter((script) => script !== value));
+    } else {
+      setScripts([...scripts, value]);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("data:", containerData);
     createClass({ professorId: studentId, classData: containerData });
   };
 
@@ -117,15 +126,79 @@ const CreateContainerPage = () => {
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="port">Custom Script</label>
-              <input
-                type="text"
-                id="port"
-                placeholder="ex) apt install -y vim \n"
-                value={script}
-                onChange={(e) => setScript(e.target.value)}
-                required
-              />
+              <label>Custom Script</label>
+              <div className={styles.checkboxGroup}>
+                <div className={styles.firstLine}>
+                  <div className={styles.checkbox}>
+                    <input
+                      type="checkbox"
+                      id="python"
+                      name="customScript"
+                      value="python"
+                      checked={scripts.includes("python")}
+                      onChange={(e) => handleScriptChange(e.target.value)}
+                    />
+                    <label htmlFor="python">python</label>
+                  </div>
+                  <div className={styles.checkbox}>
+                    <input
+                      type="checkbox"
+                      id="nodejs"
+                      name="customScript"
+                      value="nodejs"
+                      checked={scripts.includes("nodejs")}
+                      onChange={(e) => handleScriptChange(e.target.value)}
+                    />
+                    <label htmlFor="nodejs">nodejs</label>
+                  </div>
+                  <div className={styles.checkbox}>
+                    <input
+                      type="checkbox"
+                      id="ruby"
+                      name="customScript"
+                      value="ruby"
+                      checked={scripts.includes("ruby")}
+                      onChange={(e) => handleScriptChange(e.target.value)}
+                    />
+                    <label htmlFor="ruby">ruby</label>
+                  </div>
+                </div>
+                <div className={styles.firstLine}>
+                  <div className={styles.checkbox}>
+                    <input
+                      type="checkbox"
+                      id="vim"
+                      name="customScript"
+                      value="vim"
+                      checked={scripts.includes("vim")}
+                      onChange={(e) => handleScriptChange(e.target.value)}
+                    />
+                    <label htmlFor="vim">vim</label>
+                  </div>
+                  <div className={styles.checkbox}>
+                    <input
+                      type="checkbox"
+                      id="nginx"
+                      name="customScript"
+                      value="nginx"
+                      checked={scripts.includes("nginx")}
+                      onChange={(e) => handleScriptChange(e.target.value)}
+                    />
+                    <label htmlFor="nginx">nginx</label>
+                  </div>
+                  <div className={styles.checkbox}>
+                    <input
+                      type="checkbox"
+                      id="golang"
+                      name="customScript"
+                      value="golang"
+                      checked={scripts.includes("golang")}
+                      onChange={(e) => handleScriptChange(e.target.value)}
+                    />
+                    <label htmlFor="golang">golang</label>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <button type="submit" className={styles.submitButton}>
