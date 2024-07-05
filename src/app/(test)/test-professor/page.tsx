@@ -19,6 +19,7 @@ const TestPage = () => {
   const [className, setClassName] = useState("");
   const [studentIds, setStudentIds] = useState("");
   const [vscode, setVscode] = useState("");
+  const [command, setCommand] = useState("");
   const [customScript, setCustomScript] = useState("");
 
   const [deleteClassName, setDeleteClassName] = useState("");
@@ -40,6 +41,7 @@ const TestPage = () => {
       className,
       studentIds: studentIds.split(","),
       options: { vscode },
+      command: command.split(","),
       customScript: customScript.split(","),
     };
     createClass({ professorId: studentId, classData });
@@ -85,6 +87,12 @@ const TestPage = () => {
           placeholder='Options ("yes" or "no" for vscode)'
           value={vscode}
           onChange={(e) => setVscode(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Command (comma separated)"
+          value={command}
+          onChange={(e) => setCommand(e.target.value)}
         />
         <input
           type="text"
