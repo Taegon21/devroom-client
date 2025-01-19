@@ -1,54 +1,82 @@
-# DevRoom Client
+<div align=center>
+<img width="100%" height="auto" src="https://github.com/user-attachments/assets/06e7882b-6b54-40ba-8466-1994943ab772"> 
+<br/> 
+<br/>  
+<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">  
+<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">  
+<img src="https://img.shields.io/badge/aws-FF9900?style=for-the-badge&logo=amazonwebservices&logoColor=white">  
+<img src="https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white">  
+<img src="https://img.shields.io/badge/k3s-FFC61C?style=for-the-badge&logo=k3s&logoColor=black">  
+<img src="https://img.shields.io/badge/helm-0F1689?style=for-the-badge&logo=helm&logoColor=white">  
+<br/>  
 
-### ✏️ Commit Convention
+<!-- ![version](https://img.shields.io/badge/version-1.0-white) -->
+<!-- [![GitHub commit](https://img.shields.io/github/last-commit/Yanghyeondong/DEV-ROOM.svg)](https://github.com/Yanghyeondong/DEV-ROOM/pulse) -->
+<!-- [![CodeFactor](https://www.codefactor.io/repository/github/yanghyeondong/DEV-ROOM/badge)](https://www.codefactor.io/repository/github/yanghyeondong/DEV-ROOM) -->
+<br/>  
+</div>
 
+# 📌 DevRoom: 교육용 개인 개발 컨테이너 관리 시스템
 
-✨ :sparkles: → 새기능  
-💄 :lipstick: → UI스타일 수정  
-♻️ :recycle: → 코드 리팩토링  
-🐛 :bug: → 버그  
-📝 :memo: → 문서 관련 (리드미, 깃이그노어)  
-➕ :heavy_plus_sign: → 의존성 추가  
-➖ :heavy_minus_sign: → 의존성 제거  
-🎨 :art: → 폴더 구조 변경( 파일 이름 변경, 리소스 변경 등)  
-🔀 :twisted_rightwards_arrows: → 머지  
-⏪ :rewind: → 리버트
+### 📚 [DevRoom 프로젝트 전체 소개](https://github.com/DEVROOM-OFFICIAL)
+### - 📙 [DevRoom 프론트엔드 Repo](https://github.com/DEVROOM-OFFICIAL/DEVROOM-frontend)
+### - 📗 [DevRoom 백엔드 Repo](https://github.com/DEVROOM-OFFICIAL/DEVROOM-backend)
+### - 📘 [DevRoom K8s 운용 시스템 Repo](https://github.com/DEVROOM-OFFICIAL/DEVROOM-k8s)
 
+<br>
 
+# 🎯 1. DevRoom 소개
+<br>
 
+## 1.1. Overview
 
-## Getting Started
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+**DevRoom**은 수업에 필요한 환경과 자료를 효율적으로 관리합니다.
 
-First, run the development server:
+**DevRoom**에서는 교육자가 웹 서비스에서 한 번의 클릭으로 수십개의 컨테이너 환경을 구축합니다.
 
-```bash
-npm run dev
-# or11
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**DevRoom**에서는 수강생이 웹 IDE, SSH 등으로 손쉽게 컨테이너 환경에 접속합니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+교육자도, 수강생도, 모두가 수업과 교육에 집중할수 있는 환경을 만들어 주는것이 '**DevRoom**'의 목적입니다.  
+<br>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 1.2 프로젝트 구조도
+![image](https://github.com/Yanghyeondong/DEV-ROOM/assets/37038105/0e887b43-4d76-48c2-a130-86e86cd7135a)
+<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 1.3 DB ERD
+![image](https://github.com/Yanghyeondong/DEV-ROOM/assets/37038105/df662fc0-d331-4592-818b-2262b4f7bfa9)
+<br>
+# 👥 2. 팀 정보
 
-## Learn More
+<table>
+ <tr>
+  <td align='center'>사진</td>
+  <td align='center'>이름</td>
+  <td align='center'>역할</td>
+  <td align='center'>GitHub</td>
+  <td align='center'>E-Mail</td>
+ </tr>
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ <tr>
+  <td align='center'><img src="https://github.com/Yanghyeondong/DEV-ROOM/assets/37038105/0e3d3b18-4bc7-4bc0-b647-ec3efad7f521" width="50" height="50"></td>
+  <td align='center'>조재현</td>
+  <td align='center'>DB 설계<br>Spring 서버 개발</td>
+  <td align='center'><a href="https://github.com/legionary7931"><img src="http://img.shields.io/badge/legionary7931-green?style=social&logo=github"/></a></td>
+  <td align='center'><a href="mailto:jihlon7931@g.skku.edu"><img src="https://img.shields.io/badge/jihlon7931@g.skku.edu-green?logo=gmail&style=social"/></a></td>
+ </tr>
+ 
+ <tr>
+  <td align='center'><img src="https://github.com/osamhack2021/web_Guntor-Guntee_EarlyFried/blob/master/resources/image/3.png" width="50" height="50"></td>
+  <td align='center'>양현동</td>
+  <td align='center'>K8S 서버 구축 및 관리<br>백엔드 API 관리</td>
+  <td align='center'><a href="https://github.com/Yanghyeondong"><img src="http://img.shields.io/badge/Yanghyeondong-green?style=social&logo=github"/></a></td>
+  <td align='center'><a href="mailto:hdyang0686@naver.com"><img src="https://img.shields.io/badge/hdyang0686@naver.com-green?logo=naver&style=social"/></a></td>
+ </tr>
+ <tr>
+  <td align='center'><img src="https://github.com/Yanghyeondong/DEV-ROOM/assets/37038105/006cac20-d6fc-4a91-ab46-ec4f9664645b" width="50" height="50"></td>
+  <td align='center'>김태건</td>
+  <td align='center'>프론트엔드 개발 및 관리</td>
+  <td align='center'><a href="https://github.com/Taegon21"><img src="http://img.shields.io/badge/Taegon21-green?style=social&logo=github"/></a></td>
+  <td align='center'><a href="mailto:aksen5240@gmail.com"><img src="https://img.shields.io/badge/aksen5240@gmail.com-green?logo=gmail&style=social"/></a></td>
+ </tr>
+</table>
